@@ -11,14 +11,27 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: "PRD Guide — Professional Product Documentation",
   description:
     "A comprehensive guide to writing Product Requirements Documents and essential software product deliverables for engineering teams.",
+  icons: {
+    icon: '/icon.png',
+    apple: '/icon.png',
+  },
   openGraph: {
     title: "PRD Guide — Professional Product Documentation",
     description: "A comprehensive guide to writing Product Requirements Documents and essential software product deliverables for engineering teams.",
     url: "https://prd-guide.example.com", // Replace with your actual domain
     type: "website",
+    images: [
+      {
+        url: '/opengraph-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'PRD Guide Open Graph Image',
+      },
+    ],
   },
 };
 
