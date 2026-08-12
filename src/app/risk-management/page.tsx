@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ShieldCheck, Clock, AlertTriangle, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Clock, AlertTriangle, ArrowRight, LifeBuoy } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { motion } from 'framer-motion';
 
@@ -32,18 +32,18 @@ export default function RiskManagement() {
             <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#DC2626' }}>
               <ShieldCheck size={16} className="text-white" />
             </div>
-            <h2 className="font-bold">1. Security & Compliance Checklist</h2>
+            <h2 className="font-bold">{t('risk_sec_title')}</h2>
           </div>
           <div className="p-6 space-y-5">
             <p className="text-sm leading-relaxed" style={{ color: '#374151' }}>
-              Security and compliance must be designed in — not bolted on after launch. Define your security posture upfront.
+              {t('risk_sec_intro')}
             </p>
 
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="font-semibold text-sm mb-3" style={{ color: '#111827' }}>🔐 Authentication & Auth</h3>
+                <h3 className="font-semibold text-sm mb-3" style={{ color: '#111827' }}>{t('risk_sec_auth')}</h3>
                 <div className="space-y-2 text-xs">
-                  {['OAuth 2.0 / OpenID Connect', 'JWT with short-lived access tokens', 'Multi-Factor Authentication (MFA)', 'Role-Based Access Control (RBAC)'].map(item => (
+                  {[t('risk_sec_auth_i1'), t('risk_sec_auth_i2'), t('risk_sec_auth_i3'), t('risk_sec_auth_i4')].map(item => (
                     <label key={item} className="flex items-center gap-2" style={{ color: '#4B5563' }}>
                       <input type="checkbox" checked readOnly className="accent-red-600 rounded-sm" /> {item}
                     </label>
@@ -51,9 +51,9 @@ export default function RiskManagement() {
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold text-sm mb-3" style={{ color: '#111827' }}>🛡️ Data Protection</h3>
+                <h3 className="font-semibold text-sm mb-3" style={{ color: '#111827' }}>{t('risk_sec_data')}</h3>
                 <div className="space-y-2 text-xs">
-                  {['HTTPS everywhere (TLS 1.3)', 'Passwords hashed with bcrypt', 'PII encrypted at rest', 'SQL injection & XSS prevention'].map(item => (
+                  {[t('risk_sec_data_i1'), t('risk_sec_data_i2'), t('risk_sec_data_i3'), t('risk_sec_data_i4')].map(item => (
                     <label key={item} className="flex items-center gap-2" style={{ color: '#4B5563' }}>
                       <input type="checkbox" checked readOnly className="accent-red-600 rounded-sm" /> {item}
                     </label>
@@ -63,12 +63,12 @@ export default function RiskManagement() {
             </div>
 
             <div>
-              <h3 className="font-semibold text-sm mb-3" style={{ color: '#111827' }}>📋 Regulatory Compliance</h3>
+              <h3 className="font-semibold text-sm mb-3" style={{ color: '#111827' }}>{t('risk_sec_reg')}</h3>
               <div className="grid md:grid-cols-3 gap-3">
                 {[
-                  { name: 'GDPR', region: '🇪🇺 Europe', reqs: ['Right to erasure', 'Cookie consent', 'Privacy policy'] },
-                  { name: 'CCPA', region: '🇺🇸 California', reqs: ['Opt-out of data sale', 'Right to know', 'Non-discrimination'] },
-                  { name: 'ISO 27001', region: '🌐 Global', reqs: ['Risk assessment', 'Incident procedures', 'Audit trails'] },
+                  { name: 'GDPR', region: t('risk_sec_reg_eu'), reqs: [t('risk_sec_reg_eu_i1'), t('risk_sec_reg_eu_i2'), t('risk_sec_reg_eu_i3')] },
+                  { name: 'CCPA', region: t('risk_sec_reg_us'), reqs: [t('risk_sec_reg_us_i1'), t('risk_sec_reg_us_i2'), t('risk_sec_reg_us_i3')] },
+                  { name: 'ISO 27001', region: t('risk_sec_reg_gl'), reqs: [t('risk_sec_reg_gl_i1'), t('risk_sec_reg_gl_i2'), t('risk_sec_reg_gl_i3')] },
                 ].map(({ name, region, reqs }) => (
                   <div key={name} className="p-4 rounded-xl border" style={{ background: '#F9FAFB', borderColor: '#E5E7EB' }}>
                     <p className="font-bold text-sm mb-0.5" style={{ color: '#111827' }}>{name}</p>
@@ -93,27 +93,27 @@ export default function RiskManagement() {
             <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#DC2626' }}>
               <Clock size={16} className="text-white" />
             </div>
-            <h2 className="font-bold">2. SLA & Support Plan</h2>
+            <h2 className="font-bold">{t('risk_sla_title')}</h2>
           </div>
           <div className="p-6 space-y-4">
             <p className="text-sm leading-relaxed" style={{ color: '#374151' }}>
-              A Service Level Agreement (SLA) is a formal commitment to your users about availability and response times.
+              {t('risk_sla_intro')}
             </p>
             <div className="overflow-hidden border rounded-xl" style={{ borderColor: '#E5E7EB' }}>
               <table className="w-full text-sm text-left">
                 <thead style={{ background: '#1F2937', color: '#FFFFFF' }}>
                   <tr>
-                    <th className="px-4 py-3 font-semibold">Severity</th>
-                    <th className="px-4 py-3 font-semibold">Definition</th>
-                    <th className="px-4 py-3 font-semibold">Response</th>
+                    <th className="px-4 py-3 font-semibold">{t('risk_sla_col_sev')}</th>
+                    <th className="px-4 py-3 font-semibold">{t('risk_sla_col_def')}</th>
+                    <th className="px-4 py-3 font-semibold">{t('risk_sla_col_res')}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[
-                    { severity: 'P0 — Critical', def: 'Complete service outage, data loss', response: '< 15 min' },
-                    { severity: 'P1 — High', def: 'Core feature broken for all users', response: '< 1 hour' },
-                    { severity: 'P2 — Medium', def: 'Feature degraded, workaround exists', response: '< 4 hours' },
-                    { severity: 'P3 — Low', def: 'Minor bug, cosmetic issues', response: '< 24 hours' },
+                    { severity: t('risk_sla_p0'), def: t('risk_sla_p0_def'), response: t('risk_sla_p0_res') },
+                    { severity: t('risk_sla_p1'), def: t('risk_sla_p1_def'), response: t('risk_sla_p1_res') },
+                    { severity: t('risk_sla_p2'), def: t('risk_sla_p2_def'), response: t('risk_sla_p2_res') },
+                    { severity: t('risk_sla_p3'), def: t('risk_sla_p3_def'), response: t('risk_sla_p3_res') },
                   ].map((row, i) => (
                     <tr key={i} className="border-b last:border-0" style={{ borderColor: '#E5E7EB' }}>
                       <td className="px-4 py-3 font-semibold whitespace-nowrap" style={{ color: row.severity.includes('P0') ? '#DC2626' : '#111827' }}>{row.severity}</td>
@@ -127,7 +127,40 @@ export default function RiskManagement() {
           </div>
         </motion.div>
 
-        {/* 3. Incident Plan */}
+        {/* 3. Incident Response / DR */}
+        <motion.div 
+          whileHover={{ scale: 1.01, x: 4 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          className="card"
+        >
+          <div className="card-header">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#DC2626' }}>
+              <LifeBuoy size={16} className="text-white" />
+            </div>
+            <h2 className="font-bold">{t('risk_dr_title')}</h2>
+          </div>
+          <div className="p-6 space-y-4">
+            <p className="text-sm leading-relaxed" style={{ color: '#374151' }}>
+              {t('risk_dr_intro')}
+            </p>
+            <div className="grid md:grid-cols-3 gap-4">
+              <div className="p-4 rounded-xl border border-red-100 bg-red-50 text-center">
+                <h3 className="font-bold text-red-900 mb-1">{t('risk_dr_rto')}</h3>
+                <p className="text-xs text-red-700">{t('risk_dr_rto_desc')}</p>
+              </div>
+              <div className="p-4 rounded-xl border border-red-100 bg-red-50 text-center">
+                <h3 className="font-bold text-red-900 mb-1">{t('risk_dr_rpo')}</h3>
+                <p className="text-xs text-red-700">{t('risk_dr_rpo_desc')}</p>
+              </div>
+              <div className="p-4 rounded-xl border border-gray-100 bg-gray-50 text-center">
+                <h3 className="font-bold text-gray-900 mb-1">{t('risk_dr_comm')}</h3>
+                <p className="text-xs text-gray-600">{t('risk_dr_comm_desc')}</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* 4. Risk Mitigation Plan */}
         <motion.div 
           whileHover={{ scale: 1.01, x: 4 }}
           transition={{ type: 'spring', stiffness: 300, damping: 20 }}
@@ -137,30 +170,30 @@ export default function RiskManagement() {
             <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#DC2626' }}>
               <AlertTriangle size={16} className="text-white" />
             </div>
-            <h2 className="font-bold">3. Risk Mitigation Plan</h2>
+            <h2 className="font-bold">{t('risk_mit_title')}</h2>
           </div>
           <div className="p-6 space-y-4">
             <p className="text-sm leading-relaxed" style={{ color: '#374151' }}>
-              Proactively identify risks before they become incidents.
+              {t('risk_mit_intro')}
             </p>
             <div className="space-y-3">
               {[
-                { risk: 'Security Vulnerability (CVE / Breach)', impact: 'Critical',
-                  mitigation: ['Automated dependency scanning', 'Regular penetration testing', 'WAF in front of APIs'] },
-                { risk: 'Technical Debt Accumulation', impact: 'High',
-                  mitigation: ['20% of sprint allocated to refactoring', 'Mandatory code review', 'SonarQube for code quality'] },
-                { risk: 'Server Crash / Infrastructure Failure', impact: 'Critical',
-                  mitigation: ['Multi-AZ deployment', 'Auto-scaling groups', 'Automated database failover'] },
+                { risk: t('risk_mit_r1'), impact: t('risk_mit_r1_imp'),
+                  mitigation: [t('risk_mit_r1_m1'), t('risk_mit_r1_m2'), t('risk_mit_r1_m3')] },
+                { risk: t('risk_mit_r2'), impact: t('risk_mit_r2_imp'),
+                  mitigation: [t('risk_mit_r2_m1'), t('risk_mit_r2_m2'), t('risk_mit_r2_m3')] },
+                { risk: t('risk_mit_r3'), impact: t('risk_mit_r3_imp'),
+                  mitigation: [t('risk_mit_r3_m1'), t('risk_mit_r3_m2'), t('risk_mit_r3_m3')] },
               ].map(({ risk, impact, mitigation }) => (
                 <div key={risk} className="border rounded-xl overflow-hidden" style={{ borderColor: '#E5E7EB' }}>
                   <div className="flex flex-wrap items-center gap-3 px-5 py-3" style={{ background: '#F9FAFB' }}>
                     <h3 className="font-semibold text-sm flex-1" style={{ color: '#111827' }}>{risk}</h3>
-                    <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: '#FEE2E2', color: '#B91C1C' }}>
-                      Impact: {impact}
+                    <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: impact.includes('Critical') || impact.includes('အလွန်ပြင်းထန်') ? '#FEE2E2' : '#FEF3C7', color: impact.includes('Critical') || impact.includes('အလွန်ပြင်းထန်') ? '#B91C1C' : '#D97706' }}>
+                      {t('risk_mit_lbl_impact')}: {impact}
                     </span>
                   </div>
                   <div className="px-5 py-3" style={{ background: '#FFFFFF' }}>
-                    <p className="text-[10px] font-bold uppercase tracking-wide mb-2" style={{ color: '#9CA3AF' }}>Mitigation Strategy</p>
+                    <p className="text-[10px] font-bold uppercase tracking-wide mb-2" style={{ color: '#9CA3AF' }}>{t('risk_mit_lbl_mit')}</p>
                     <ul className="grid md:grid-cols-2 gap-x-4 gap-y-1">
                       {mitigation.map(m => (
                         <li key={m} className="text-xs flex items-start gap-1.5" style={{ color: '#6B7280' }}>

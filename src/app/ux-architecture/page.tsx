@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Monitor, GitBranch, Database, Code2 } from 'lucide-react';
+import { ArrowRight, Route, Monitor, GitBranch, Database, Code2 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { motion } from 'framer-motion';
 
@@ -10,61 +10,76 @@ export default function UxArchitecture() {
 
   const sections = [
     {
-      id: 'uiux',
-      icon: Monitor,
-      title: 'Wireframes & High-Fidelity UI/UX',
-      intro: 'Visual designs give every stakeholder a shared mental model of the product before development begins. They dramatically reduce costly redesigns later.',
+      id: 'flows',
+      icon: Route,
+      title: t('ux_flow_title'),
+      intro: t('ux_flow_intro'),
       grid: [
-        { title: 'Low-Fidelity Wireframes', items: ['Simple sketches or grayscale mockups', 'Focus on layout and information hierarchy', 'Tools: Balsamiq, Whimsical, FigJam'] },
-        { title: 'High-Fidelity UI Designs', items: ['Pixel-perfect, color-accurate screen designs', 'Interactive prototypes with click flows', 'Tools: Figma, Adobe XD'] },
+        { title: t('ux_flow_onboarding'), items: [t('ux_flow_onboarding_desc')] },
+        { title: t('ux_flow_checkout'), items: [t('ux_flow_checkout_desc')] },
       ],
       delivery: {
-        title: 'What to Deliver',
-        items: ['Screen-by-screen visual designs for all pages', 'User flow prototypes (Figma links)', 'Responsive breakpoints', 'Accessibility annotations'],
+        title: t('ux_flow_delivery_title'),
+        items: [t('ux_flow_delivery_items_0'), t('ux_flow_delivery_items_1')],
+      }
+    },
+    {
+      id: 'uiux',
+      icon: Monitor,
+      title: t('ux_uiux_title'),
+      intro: t('ux_uiux_intro'),
+      grid: [
+        { title: t('ux_uiux_lofi'), items: [t('ux_uiux_lofi_items_0'), t('ux_uiux_lofi_items_1'), t('ux_uiux_lofi_items_2')] },
+        { title: t('ux_uiux_hifi'), items: [t('ux_uiux_hifi_items_0'), t('ux_uiux_hifi_items_1'), t('ux_uiux_hifi_items_2')] },
+      ],
+      delivery: {
+        title: t('ux_uiux_delivery_title'),
+        items: [t('ux_uiux_delivery_items_0'), t('ux_uiux_delivery_items_1'), t('ux_uiux_delivery_items_2'), t('ux_uiux_delivery_items_3')],
       }
     },
     {
       id: 'arch',
       icon: GitBranch,
-      title: 'System Architecture Diagram',
-      intro: 'A system architecture diagram maps out how all technical components interact. It gives engineers a blueprint for structuring the codebase.',
+      title: t('ux_arch_title'),
+      intro: t('ux_arch_intro'),
       cards: [
-        { label: 'Frontend', desc: 'Client-side layer — Next.js, React, Vue. Renders the UI and calls APIs.' },
-        { label: 'Backend', desc: 'Server-side logic — NestJS, Express, FastAPI. Processes business rules.' },
-        { label: 'Cloud & Infra', desc: 'Hosting & scaling — AWS, GCP, Azure. Manages containers and deployments.' },
+        { label: t('ux_arch_front'), desc: t('ux_arch_front_desc') },
+        { label: t('ux_arch_back'), desc: t('ux_arch_back_desc') },
+        { label: t('ux_arch_cloud'), desc: t('ux_arch_cloud_desc') },
       ],
       delivery: {
-        title: 'Patterns to Document',
-        items: ['Monolith vs. Microservices', 'API gateways', 'Message queues (Kafka)', 'Caching (Redis)', 'Auth flow (OAuth2)'],
+        title: t('ux_arch_delivery_title'),
+        items: [t('ux_arch_delivery_items_0'), t('ux_arch_delivery_items_1'), t('ux_arch_delivery_items_2'), t('ux_arch_delivery_items_3'), t('ux_arch_delivery_items_4')],
       }
     },
     {
       id: 'erd',
       icon: Database,
-      title: 'ERD & Database Schema',
-      intro: 'An Entity-Relationship Diagram (ERD) maps data entities. It is the blueprint database engineers use before writing SQL.',
+      title: t('ux_erd_title'),
+      intro: t('ux_erd_intro'),
       table: [
-        { entity: 'User', rel: 'has many', card: 'Orders (1:N)' },
-        { entity: 'Order', rel: 'contains many', card: 'Products (N:M)' },
-        { entity: 'Product', rel: 'belongs to', card: 'Category (N:1)' },
+        { entity: t('ux_erd_user'), rel: t('ux_erd_user_rel'), card: t('ux_erd_user_card') },
+        { entity: t('ux_erd_order'), rel: t('ux_erd_order_rel'), card: t('ux_erd_order_card') },
+        { entity: t('ux_erd_product'), rel: t('ux_erd_product_rel'), card: t('ux_erd_product_card') },
       ],
+      tableHeaders: [t('ux_erd_col_entity'), t('ux_erd_col_rel'), t('ux_erd_col_card')],
       delivery: {
-        title: 'Recommended ERD Tools',
-        desc: 'dbdiagram.io, DrawSQL, Lucidchart, pgModeler, MySQL Workbench.',
+        title: t('ux_erd_delivery_title'),
+        desc: t('ux_erd_delivery_desc'),
       }
     },
     {
       id: 'api',
       icon: Code2,
-      title: 'API Specifications',
-      intro: 'API specs define the contract between frontend, backend, and third-party services, allowing teams to work in parallel.',
+      title: t('ux_api_title'),
+      intro: t('ux_api_intro'),
       grid: [
-        { title: 'Endpoint Definitions', items: ['HTTP Method & Path', 'Request body schema', 'Response structure', 'Auth requirements', 'Rate limits'] },
-        { title: 'Third-Party Specs', items: ['Payment gateways (Stripe)', 'SMS/Email (Twilio)', 'OAuth (Google/Meta)', 'Analytics (Mixpanel)'] },
+        { title: t('ux_api_endpoints'), items: [t('ux_api_endpoints_items_0'), t('ux_api_endpoints_items_1'), t('ux_api_endpoints_items_2'), t('ux_api_endpoints_items_3'), t('ux_api_endpoints_items_4')] },
+        { title: t('ux_api_third'), items: [t('ux_api_third_items_0'), t('ux_api_third_items_1'), t('ux_api_third_items_2'), t('ux_api_third_items_3')] },
       ],
       delivery: {
-        title: 'Documentation Tools',
-        desc: 'Swagger UI / OpenAPI (industry standard), Postman, Insomnia, Stoplight.',
+        title: t('ux_api_delivery_title'),
+        desc: t('ux_api_delivery_desc'),
       }
     }
   ];
@@ -82,7 +97,7 @@ export default function UxArchitecture() {
       </div>
 
       <div className="space-y-6">
-        {sections.map((sec, idx) => {
+        {sections.map((sec) => {
           const Icon = sec.icon;
           return (
             <motion.div 
@@ -97,7 +112,7 @@ export default function UxArchitecture() {
                   <Icon size={16} className="text-white" />
                 </div>
                 <h2 className="font-bold">
-                  {idx + 1}. {sec.title}
+                  {sec.title}
                 </h2>
               </div>
 
@@ -141,9 +156,9 @@ export default function UxArchitecture() {
                     <table className="w-full text-sm text-left">
                       <thead style={{ background: '#1F2937', color: '#FFFFFF' }}>
                         <tr>
-                          <th className="px-4 py-3 font-semibold">Entity</th>
-                          <th className="px-4 py-3 font-semibold">Relationship</th>
-                          <th className="px-4 py-3 font-semibold">Cardinality</th>
+                          <th className="px-4 py-3 font-semibold">{sec.tableHeaders?.[0]}</th>
+                          <th className="px-4 py-3 font-semibold">{sec.tableHeaders?.[1]}</th>
+                          <th className="px-4 py-3 font-semibold">{sec.tableHeaders?.[2]}</th>
                         </tr>
                       </thead>
                       <tbody>
