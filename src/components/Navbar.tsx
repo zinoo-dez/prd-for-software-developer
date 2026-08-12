@@ -238,24 +238,18 @@ export default function Navbar() {
               <button
                 id="lang-toggle-btn"
                 onClick={toggleLanguage}
-                aria-label="Toggle language"
-                className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 hover:bg-gray-800 hover:border-gray-600 active:scale-95 shadow-xs"
+                aria-label={language === 'en' ? "Switch to Myanmar" : "Switch to English"}
+                title={language === 'en' ? "Switch to Myanmar" : "Switch to English"}
+                className="flex items-center justify-center w-9 h-9 rounded-lg transition-all duration-200 hover:bg-gray-800 hover:border-gray-600 active:scale-95 shadow-xs shrink-0"
                 style={{
                   border: '1px solid #374151',
-                  color: '#F3F4F6',
                   background: '#1F2937',
                 }}
               >
                 {language === 'en' ? (
-                  <>
-                    <MyanmarFlag className="w-4 h-3" />
-                    <span>မြန်မာ</span>
-                  </>
+                  <MyanmarFlag className="w-5 h-3.5" />
                 ) : (
-                  <>
-                    <UKFlag className="w-4 h-3" />
-                    <span>English</span>
-                  </>
+                  <UKFlag className="w-5 h-3.5" />
                 )}
               </button>
 
@@ -361,23 +355,18 @@ export default function Navbar() {
                   <span className="text-xs font-medium text-gray-400">Language / ဘာသာစကား</span>
                   <button
                     onClick={toggleLanguage}
-                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 hover:bg-gray-800 shadow-xs"
+                    aria-label={language === 'en' ? "Switch to Myanmar" : "Switch to English"}
+                    title={language === 'en' ? "Switch to Myanmar" : "Switch to English"}
+                    className="flex items-center justify-center w-9 h-9 rounded-lg transition-all duration-200 hover:bg-gray-800 shadow-xs"
                     style={{
                       border: '1px solid #374151',
-                      color: '#F3F4F6',
                       background: '#111827',
                     }}
                   >
                     {language === 'en' ? (
-                      <>
-                        <MyanmarFlag className="w-4 h-3" />
-                        <span>မြန်မာ</span>
-                      </>
+                      <MyanmarFlag className="w-5 h-3.5" />
                     ) : (
-                      <>
-                        <UKFlag className="w-4 h-3" />
-                        <span>English</span>
-                      </>
+                      <UKFlag className="w-5 h-3.5" />
                     )}
                   </button>
                 </div>
