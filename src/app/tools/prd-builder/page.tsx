@@ -141,13 +141,22 @@ ${data.metrics ? data.metrics.split('\n').map(line => `- ${line}`).join('\n') : 
             >
               {t('b_btn_prev')}
             </button>
-            <button 
-              onClick={() => setStep(Math.min(3, step + 1))}
-              disabled={step === 3}
-              className="px-5 py-2 bg-gray-900 text-white rounded-lg text-sm font-semibold disabled:opacity-30 transition-opacity hover:bg-gray-800"
-            >
-              {t('b_btn_next')}
-            </button>
+            {step < 3 ? (
+              <button 
+                onClick={() => setStep(Math.min(3, step + 1))}
+                className="px-5 py-2 bg-gray-900 text-white rounded-lg text-sm font-semibold transition-opacity hover:bg-gray-800"
+              >
+                {t('b_btn_next')}
+              </button>
+            ) : (
+              <button 
+                onClick={handleCopy}
+                className="px-5 py-2 bg-red-600 text-white rounded-lg text-sm font-semibold transition-colors hover:bg-red-700 flex items-center gap-1.5"
+              >
+                {copied ? <Check size={16} /> : <Copy size={16} />}
+                {copied ? t('b_copied') : t('b_btn_copy')}
+              </button>
+            )}
           </div>
         </div>
 
