@@ -24,14 +24,6 @@ export const metadata: Metadata = {
     description: "A comprehensive guide to writing Product Requirements Documents and essential software product deliverables for engineering teams.",
     url: "https://learnprd.vercel.app", // Replace with your actual domain
     type: "website",
-    images: [
-      {
-        url: '/opengraph-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'PRD Guide Open Graph Image',
-      },
-    ],
   },
 };
 
