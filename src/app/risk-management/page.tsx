@@ -99,8 +99,8 @@ export default function RiskManagement() {
             <p className="text-sm leading-relaxed" style={{ color: '#374151' }}>
               {t('risk_sla_intro')}
             </p>
-            <div className="overflow-hidden border rounded-xl" style={{ borderColor: '#E5E7EB' }}>
-              <table className="w-full text-sm text-left">
+            <div className="overflow-x-auto border rounded-xl" style={{ borderColor: '#E5E7EB' }}>
+              <table className="w-full text-sm text-left min-w-[500px]">
                 <thead style={{ background: '#1F2937', color: '#FFFFFF' }}>
                   <tr>
                     <th className="px-4 py-3 font-semibold">{t('risk_sla_col_sev')}</th>

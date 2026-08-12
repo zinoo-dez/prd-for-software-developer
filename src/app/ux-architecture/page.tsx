@@ -154,8 +154,8 @@ export default function UxArchitecture() {
 
                 {/* Table format */}
                 {sec.table && (
-                  <div className="overflow-hidden border rounded-xl" style={{ borderColor: '#E5E7EB' }}>
-                    <table className="w-full text-sm text-left">
+                  <div className="overflow-x-auto border rounded-xl" style={{ borderColor: '#E5E7EB' }}>
+                    <table className="w-full text-sm text-left min-w-[450px]">
                       <thead style={{ background: '#1F2937', color: '#FFFFFF' }}>
                         <tr>
                           <th className="px-4 py-3 font-semibold">{sec.tableHeaders?.[0]}</th>

@@ -75,10 +75,10 @@ export default function ApiDatabase() {
             </p>
 
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+              <div className="border border-gray-200 rounded-xl overflow-x-auto shadow-sm">
                 <div className="bg-gray-50 font-bold px-4 py-3 border-b text-sm text-gray-900">Users Table</div>
-                <div className="p-0">
-                  <table className="w-full text-left text-sm text-gray-600">
+                <div className="p-0 overflow-x-auto">
+                  <table className="w-full text-left text-sm text-gray-600 min-w-[300px]">
                     <thead className="bg-gray-50/50">
                       <tr><th className="px-4 py-2 font-semibold">Column</th><th className="px-4 py-2 font-semibold">Type</th></tr>
                     </thead>
@@ -91,10 +91,10 @@ export default function ApiDatabase() {
                 </div>
               </div>
 
-              <div className="border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+              <div className="border border-gray-200 rounded-xl overflow-x-auto shadow-sm">
                 <div className="bg-gray-50 font-bold px-4 py-3 border-b text-sm text-gray-900">Password_Resets Table</div>
-                <div className="p-0">
-                  <table className="w-full text-left text-sm text-gray-600">
+                <div className="p-0 overflow-x-auto">
+                  <table className="w-full text-left text-sm text-gray-600 min-w-[300px]">
                     <thead className="bg-gray-50/50">
                       <tr><th className="px-4 py-2 font-semibold">Column</th><th className="px-4 py-2 font-semibold">Type</th></tr>
                     </thead>

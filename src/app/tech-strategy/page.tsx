@@ -44,8 +44,8 @@ export default function TechStrategy() {
           </div>
           <div className="p-6 space-y-4">
             <p className="text-sm leading-relaxed" style={{ color: '#374151' }} dangerouslySetInnerHTML={{ __html: t('tech_matrix_desc') }} />
-            <div className="overflow-hidden border rounded-xl" style={{ borderColor: '#E5E7EB' }}>
-              <table className="w-full text-sm text-left">
+            <div className="overflow-x-auto border rounded-xl" style={{ borderColor: '#E5E7EB' }}>
+              <table className="w-full text-sm text-left min-w-[500px]">
                 <thead style={{ background: '#1F2937', color: '#FFFFFF' }}>
                   <tr>
                     <th className="px-4 py-3 font-semibold">{t('tech_matrix_cat')}</th>
