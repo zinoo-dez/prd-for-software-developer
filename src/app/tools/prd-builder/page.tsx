@@ -78,11 +78,14 @@ ${data.metrics ? data.metrics.split('\n').map(line => `- ${line}`).join('\n') : 
         {/* Editor Form */}
         <div className="card h-150 flex flex-col">
           <div className="card-header bg-gray-50 border-b border-gray-100 px-6 py-4 flex justify-between items-center">
-            <h2 className="font-bold text-gray-900">
-              {step === 1 && t('b_step1')}
-              {step === 2 && t('b_step2')}
-              {step === 3 && t('b_step3')}
-            </h2>
+            <div>
+              <h2 className="font-bold text-gray-900">
+                {step === 1 && t('b_step1')}
+                {step === 2 && t('b_step2')}
+                {step === 3 && t('b_step3')}
+              </h2>
+              <p className="text-[11px] text-gray-500 mt-0.5">⚡ Updates Live Preview in real-time</p>
+            </div>
             <div className="flex gap-2">
               <span className={`w-2.5 h-2.5 rounded-full ${step >= 1 ? 'bg-red-600' : 'bg-gray-200'}`} />
               <span className={`w-2.5 h-2.5 rounded-full ${step >= 2 ? 'bg-red-600' : 'bg-gray-200'}`} />
@@ -162,7 +165,11 @@ ${data.metrics ? data.metrics.split('\n').map(line => `- ${line}`).join('\n') : 
 
         {/* Live Preview */}
         <div className="card h-150 flex flex-col bg-gray-900 border-gray-800 shadow-xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4">
+          <div className="bg-gray-800/80 border-b border-gray-700/60 px-6 py-4 flex justify-between items-center shrink-0">
+            <h2 className="font-bold text-white text-sm flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              Live Markdown Output
+            </h2>
             <button 
               onClick={handleCopy}
               className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-white rounded-lg text-xs font-semibold transition-colors border border-gray-700"
@@ -171,7 +178,7 @@ ${data.metrics ? data.metrics.split('\n').map(line => `- ${line}`).join('\n') : 
               {copied ? t('b_copied') : t('b_btn_copy')}
             </button>
           </div>
-          <div className="p-6 pt-16 grow overflow-y-auto">
+          <div className="p-6 grow overflow-y-auto">
             <pre className="text-[13px] text-gray-300 font-mono whitespace-pre-wrap leading-relaxed">
               {generateMarkdown()}
             </pre>
