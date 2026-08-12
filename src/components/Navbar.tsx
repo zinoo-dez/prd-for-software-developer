@@ -11,6 +11,30 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
+const MyanmarFlag = ({ className = "w-4 h-3" }: { className?: string }) => (
+  <svg viewBox="0 0 18 12" className={`${className} rounded-[2px] overflow-hidden inline-block shrink-0 shadow-xs`} aria-hidden="true">
+    <rect width="18" height="4" y="0" fill="#FECB00" />
+    <rect width="18" height="4" y="4" fill="#34B233" />
+    <rect width="18" height="4" y="8" fill="#EA2839" />
+    <polygon points="9,2.5 10.1,5.8 13.6,5.8 10.8,7.9 11.9,11.2 9,9.1 6.1,11.2 7.2,7.9 4.4,5.8 7.9,5.8" fill="#FFFFFF" />
+  </svg>
+);
+
+const UKFlag = ({ className = "w-4 h-3" }: { className?: string }) => (
+  <svg viewBox="0 0 60 30" className={`${className} rounded-[2px] overflow-hidden inline-block shrink-0 shadow-xs`} aria-hidden="true">
+    <clipPath id="uk-flag-clip-nav">
+      <rect width="60" height="30" />
+    </clipPath>
+    <g clipPath="url(#uk-flag-clip-nav)">
+      <rect width="60" height="30" fill="#012169" />
+      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#FFFFFF" strokeWidth="6" />
+      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="2" />
+      <path d="M30,0 V30 M0,15 H60" stroke="#FFFFFF" strokeWidth="10" />
+      <path d="M30,0 V30 M0,15 H60" stroke="#C8102E" strokeWidth="6" />
+    </g>
+  </svg>
+);
+
 const getCoreNavItems = (t: ReturnType<typeof useLanguage>['t']) => [
   { name: t('nav_home'), path: '/', icon: BookOpen },
   { name: t('nav_core'), path: '/core-components', icon: FileText },
@@ -210,21 +234,41 @@ export default function Navbar() {
 
             {/* Right controls */}
             <div className="flex items-center gap-2">
-              {/* Language Toggle */}
-              <button
-                id="lang-toggle-btn"
-                onClick={toggleLanguage}
-                aria-label="Toggle language"
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200"
-                style={{
-                  border: '1px solid #374151',
-                  color: '#D1D5DB',
-                  background: 'transparent',
-                }}
+              {/* Language Flag Selector */}
+              <div
+                id="lang-toggle-container"
+                className="flex items-center p-0.5 rounded-lg border text-xs font-semibold"
+                style={{ borderColor: '#374151', background: '#111827' }}
               >
-                <Globe size={13} />
-                <span className="hidden sm:inline text-xs">{t('lang_toggle')}</span>
-              </button>
+                <button
+                  id="lang-en-btn"
+                  onClick={() => language !== 'en' && toggleLanguage()}
+                  aria-label="Switch to English"
+                  title="English"
+                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md transition-all duration-150 ${
+                    language === 'en'
+                      ? 'bg-red-600 text-white font-bold shadow-xs'
+                      : 'text-gray-400 hover:text-gray-200'
+                  }`}
+                >
+                  <UKFlag className="w-4 h-3" />
+                  <span className="hidden sm:inline">EN</span>
+                </button>
+                <button
+                  id="lang-mm-btn"
+                  onClick={() => language !== 'mm' && toggleLanguage()}
+                  aria-label="Switch to Myanmar"
+                  title="မြန်မာ"
+                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md transition-all duration-150 ${
+                    language === 'mm'
+                      ? 'bg-red-600 text-white font-bold shadow-xs'
+                      : 'text-gray-400 hover:text-gray-200'
+                  }`}
+                >
+                  <MyanmarFlag className="w-4 h-3" />
+                  <span className="hidden sm:inline">MM</span>
+                </button>
+              </div>
 
               {/* Mobile hamburger */}
               <button
@@ -321,6 +365,38 @@ export default function Navbar() {
                       </Link>
                     );
                   })}
+                </div>
+
+                {/* Mobile Language Switcher */}
+                <div className="pt-4 border-t mt-3 px-1 flex items-center justify-between" style={{ borderColor: '#374151' }}>
+                  <span className="text-xs font-medium text-gray-400">Language / ဘာသာစကား</span>
+                  <div
+                    className="flex items-center p-0.5 rounded-lg border text-xs font-semibold"
+                    style={{ borderColor: '#374151', background: '#111827' }}
+                  >
+                    <button
+                      onClick={() => language !== 'en' && toggleLanguage()}
+                      className={`flex items-center gap-1.5 px-3 py-1 rounded-md transition-all duration-150 ${
+                        language === 'en'
+                          ? 'bg-red-600 text-white font-bold shadow-xs'
+                          : 'text-gray-400 hover:text-gray-200'
+                      }`}
+                    >
+                      <UKFlag className="w-4 h-3" />
+                      <span>English</span>
+                    </button>
+                    <button
+                      onClick={() => language !== 'mm' && toggleLanguage()}
+                      className={`flex items-center gap-1.5 px-3 py-1 rounded-md transition-all duration-150 ${
+                        language === 'mm'
+                          ? 'bg-red-600 text-white font-bold shadow-xs'
+                          : 'text-gray-400 hover:text-gray-200'
+                      }`}
+                    >
+                      <MyanmarFlag className="w-4 h-3" />
+                      <span>မြန်မာ</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </motion.div>

@@ -17,7 +17,7 @@ export default function SaaSChartCaseStudy() {
       <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
         <div className="badge-green mb-4">Case Study</div>
         <h1 className="text-4xl font-extrabold tracking-tight mb-4 text-gray-900">
-          {language === 'en' ? 'B2B SaaS Analytics Dashboard' : 'B2B SaaS Analytics Dashboard'}
+          {language === 'en' ? 'B2B SaaS Analytics Dashboard' : 'B2B SaaS Analytics Dashboard အကြောင်း ရေးသားထားသည့် PRD'}
         </h1>
         <p className="text-lg leading-relaxed text-gray-600">
           {language === 'en' 

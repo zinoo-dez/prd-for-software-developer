@@ -240,7 +240,7 @@ tbody tr:hover {
 /* ============================================================
    Myanmar font support
    ============================================================ */
-:lang(my), .font-myanmar {
+:lang(my), :lang(mm), .font-myanmar {
   font-family: 'Noto Sans Myanmar', system-ui, sans-serif;
 }
 

@@ -21,6 +21,12 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  useEffect(() => {
+    const langCode = language === 'mm' ? 'my' : 'en';
+    document.documentElement.lang = langCode;
+    document.documentElement.setAttribute('lang', langCode);
+  }, [language]);
+
   const toggleLanguage = useCallback(() => {
     setLanguage(prev => {
       const next = prev === 'en' ? 'mm' : 'en';
