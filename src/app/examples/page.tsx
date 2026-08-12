@@ -1,89 +1,149 @@
+'use client';
+
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
+import { motion } from 'framer-motion';
 
 export default function Examples() {
+  const { t } = useLanguage();
+
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <div>
-        <h1 className="text-3xl font-extrabold tracking-tight mb-4 text-zinc-900 dark:text-white">
-          လက်တွေ့ ဥပမာများ (Examples)
+    <div className="space-y-8 animate-in">
+
+      {/* Hero */}
+      <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+        <div className="badge-red mb-4">{t('examples_badge')}</div>
+        <h1 className="text-4xl font-extrabold tracking-tight mb-4" style={{ color: '#111827' }}>
+          {t('examples_h1')}
         </h1>
-        <p className="text-lg text-zinc-600 dark:text-zinc-400">
-          PRD မှာ အပိုင်းတစ်ပိုင်းချင်းစီကို ဘယ်လိုရေးလေ့ရှိလဲဆိုတာ လက်တွေ့ ဥပမာလေးတွေနဲ့ လေ့လာကြည့်ရအောင်။
-        </p>
+        <p className="text-lg leading-relaxed" style={{ color: '#374151' }}>{t('examples_intro')}</p>
       </div>
 
-      <div className="space-y-8">
-        
-        {/* User Story Example */}
-        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden">
-          <div className="bg-zinc-50 dark:bg-zinc-800/50 px-6 py-4 border-b border-zinc-200 dark:border-zinc-800">
-            <h2 className="text-lg font-bold text-zinc-900 dark:text-white">၁။ User Story ရေးသားခြင်း ဥပမာ</h2>
+      <div className="space-y-5">
+
+        {/* Example 1 — User Stories */}
+        <div className="card">
+          <div className="card-header">
+            <div className="w-6 h-6 rounded flex items-center justify-center text-xs font-bold" style={{ background: '#DC2626' }}>1</div>
+            <h2 className="font-bold">Example 1 — Writing User Stories</h2>
           </div>
-          <div className="p-6 space-y-6">
-            <p className="text-zinc-600 dark:text-zinc-400">
-              User Story ဆိုတာ Feature တစ်ခုကို User ရဲ့ ရှုထောင့်ကနေ ရေးသားတာဖြစ်ပါတယ်။ ပုံသေနည်းကတော့ <code className="bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded text-pink-600 dark:text-pink-400">As a [user type], I want to [action] so that [benefit/value].</code> ဖြစ်ပါတယ်။
+          <div className="p-6 space-y-5">
+            <p className="text-sm leading-relaxed" style={{ color: '#374151' }}>
+              A User Story describes a feature from the user&apos;s perspective. The standard format is:{' '}
+              <code
+                className="px-2 py-0.5 rounded text-xs font-mono"
+                style={{ background: '#FEE2E2', color: '#B91C1C', border: '1px solid #FECACA' }}
+              >
+                As a [user type], I want to [action] so that [benefit/value].
+              </code>
             </p>
-            
+
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="border border-red-200 bg-red-50 dark:bg-red-900/10 dark:border-red-900/30 p-4 rounded-lg">
-                <h3 className="font-bold text-red-700 dark:text-red-400 mb-2 flex items-center gap-2">
-                  <span className="text-xl">❌</span> မကောင်းသော ရေးသားနည်း
+              <div
+                className="p-5 rounded-xl"
+                style={{ background: '#FFF5F5', border: '1px solid #FECACA' }}
+              >
+                <h3 className="font-bold mb-3 flex items-center gap-2 text-sm" style={{ color: '#B91C1C' }}>
+                  <span className="text-lg">❌</span> Poorly Written
                 </h3>
-                <p className="text-sm text-red-900/80 dark:text-red-200/80">"System မှာ Password reset လုပ်တဲ့ ခလုတ် ထည့်ပေးပါ။"</p>
-                <p className="text-xs text-red-600/70 dark:text-red-400/70 mt-2">(ဘာကြောင့်ထည့်ရလဲ၊ ဘယ်သူ့အတွက်လဲ မပါဝင်ပါ)</p>
+                <p className="text-sm" style={{ color: '#7F1D1D' }}>&quot;Add a password reset button to the system.&quot;</p>
+                <p className="text-xs mt-2" style={{ color: '#EF4444' }}>(Missing context: who needs it and why?)</p>
               </div>
-              
-              <div className="border border-green-200 bg-green-50 dark:bg-green-900/10 dark:border-green-900/30 p-4 rounded-lg">
-                <h3 className="font-bold text-green-700 dark:text-green-400 mb-2 flex items-center gap-2">
-                  <span className="text-xl">✅</span> ကောင်းမွန်သော ရေးသားနည်း
+
+              <div
+                className="p-5 rounded-xl"
+                style={{ background: '#F0FDF4', border: '1px solid #BBF7D0' }}
+              >
+                <h3 className="font-bold mb-3 flex items-center gap-2 text-sm" style={{ color: '#15803D' }}>
+                  <span className="text-lg">✅</span> Well Written
                 </h3>
-                <p className="text-sm text-green-900/80 dark:text-green-200/80">"As a <strong>User</strong>, I want to <strong>reset my password via email</strong> so that <strong>I can regain access to my account if I forget it.</strong>"</p>
+                <p className="text-sm" style={{ color: '#14532D' }}>
+                  &quot;As a <strong>registered user</strong>, I want to <strong>reset my password via email</strong> so that <strong>I can regain access if I forget it.</strong>&quot;
+                </p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Success Metrics Example */}
-        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden">
-          <div className="bg-zinc-50 dark:bg-zinc-800/50 px-6 py-4 border-b border-zinc-200 dark:border-zinc-800">
-            <h2 className="text-lg font-bold text-zinc-900 dark:text-white">၂။ Success Metrics တိုင်းတာခြင်း ဥပမာ</h2>
+        {/* Example 2 — Success Metrics */}
+        <div className="card">
+          <div className="card-header">
+            <div className="w-6 h-6 rounded flex items-center justify-center text-xs font-bold" style={{ background: '#DC2626' }}>2</div>
+            <h2 className="font-bold">Example 2 — Defining Success Metrics</h2>
           </div>
           <div className="p-6 space-y-4">
-            <p className="text-zinc-600 dark:text-zinc-400">
-              E-commerce Website တစ်ခုမှာ "Add to Cart" ပုံစံအသစ် (Feature) ထည့်လိုက်တယ် ဆိုပါစို့။ အဲဒီ Feature အောင်မြင်သလားဆိုတာ တိုင်းတာဖို့ အောက်ပါ Metrics တွေကို PRD မှာ ကြိုရေးထားရပါမယ်။
+            <p className="text-sm leading-relaxed" style={{ color: '#374151' }}>
+              Suppose you are adding a new &quot;Add to Cart&quot; experience to an e-commerce website. Here is how you would define measurable success criteria before development begins:
             </p>
-            <ul className="list-disc list-inside space-y-3 text-zinc-700 dark:text-zinc-300">
-              <li><strong>Conversion Rate:</strong> Add to cart နှိပ်တဲ့သူ အရေအတွက်ဟာ ယခင်ကထက် <span className="text-blue-600 font-semibold">15% တက်လာရမည်။</span></li>
-              <li><strong>Task Success Rate:</strong> User သစ်တွေရဲ့ <span className="text-blue-600 font-semibold">90%</span> ဟာ အကူအညီမပါဘဲ ပစ္စည်းဝယ်ယူခြင်း (Checkout) ကို အောင်မြင်စွာ လုပ်ဆောင်နိုင်ရမည်။</li>
-              <li><strong>System Performance:</strong> Add to Cart ခလုတ်နှိပ်ပြီး <span className="text-blue-600 font-semibold">၁ စက္ကန့်အတွင်း</span> Cart ထဲရောက်ကြောင်း Notification ပြရမည်။</li>
-            </ul>
+            <div className="space-y-3">
+              {[
+                { label: 'Conversion Rate', metric: '+15%', body: 'Add-to-cart actions must increase compared to the baseline.' },
+                { label: 'Task Success Rate', metric: '90%', body: 'Of new users must successfully complete checkout without assistance.' },
+                { label: 'System Performance', metric: '< 1s', body: 'Cart confirmation must appear within 1 second of the button click.' },
+              ].map(item => (
+                <motion.div
+                  key={item.label}
+                  whileHover={{ scale: 1.015, x: 5 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                  className="flex items-center gap-4 p-4 rounded-xl cursor-pointer"
+                  style={{ background: '#F9FAFB', border: '1px solid #E5E7EB' }}
+                >
+                  <div
+                    className="shrink-0 w-14 text-center py-1 rounded-lg font-bold text-sm"
+                    style={{ background: '#DC2626', color: '#FFFFFF' }}
+                  >
+                    {item.metric}
+                  </div>
+                  <div>
+                    <p className="font-semibold text-sm" style={{ color: '#111827' }}>{item.label}</p>
+                    <p className="text-xs" style={{ color: '#6B7280' }}>{item.body}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Out of Scope Example */}
-        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden">
-          <div className="bg-zinc-50 dark:bg-zinc-800/50 px-6 py-4 border-b border-zinc-200 dark:border-zinc-800">
-            <h2 className="text-lg font-bold text-zinc-900 dark:text-white">၃။ Scope ကန့်သတ်ခြင်း ဥပမာ (In-scope vs Out-of-scope)</h2>
+        {/* Example 3 — Scope */}
+        <div className="card">
+          <div className="card-header">
+            <div className="w-6 h-6 rounded flex items-center justify-center text-xs font-bold" style={{ background: '#DC2626' }}>3</div>
+            <h2 className="font-bold">Example 3 — Scope Definition (In vs Out)</h2>
           </div>
           <div className="p-6">
-            <p className="text-zinc-600 dark:text-zinc-400 mb-4">
-              "Chat Application" တစ်ခုရဲ့ ပထမဆုံး Version (V1) ကို ထုတ်မယ်ဆိုရင်...
+            <p className="text-sm leading-relaxed mb-5" style={{ color: '#374151' }}>
+              When launching <strong style={{ color: '#111827' }}>Version 1.0 of a Chat Application</strong>, clearly separate what is included from what is deliberately deferred:
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="font-semibold text-blue-600 mb-2 border-b border-blue-100 pb-2">🎯 In-Scope (ဒီ Version မှာ ပါမည့်အရာများ)</h3>
-                <ul className="list-disc list-inside text-sm text-zinc-700 dark:text-zinc-300 space-y-1">
-                  <li>1-to-1 Text Messaging (စာပို့ခြင်း)</li>
-                  <li>Image ပို့ခြင်း</li>
-                  <li>Read Receipts (စာဖတ်ပြီးကြောင်းပြခြင်း)</li>
+                <div
+                  className="flex items-center gap-2 font-semibold pb-3 mb-3 text-sm"
+                  style={{ color: '#111827', borderBottom: '2px solid #DC2626' }}
+                >
+                  🎯 In-Scope (V1.0)
+                </div>
+                <ul className="space-y-2">
+                  {['1-to-1 text messaging', 'Image sharing', 'Read receipts', 'Push notifications'].map(i => (
+                    <li key={i} className="flex items-center gap-2 text-sm" style={{ color: '#374151' }}>
+                      <span style={{ color: '#DC2626' }}>✓</span> {i}
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-500 mb-2 border-b border-zinc-100 dark:border-zinc-800 pb-2">🚫 Out-of-Scope (နောက်မှ လုပ်မည့်အရာများ)</h3>
-                <ul className="list-disc list-inside text-sm text-zinc-500 space-y-1">
-                  <li>Group Chat ဖန်တီးခြင်း</li>
-                  <li>Voice & Video Call ခေါ်ခြင်း</li>
-                  <li>Stickers & GIFs များ</li>
+                <div
+                  className="flex items-center gap-2 font-semibold pb-3 mb-3 text-sm"
+                  style={{ color: '#6B7280', borderBottom: '2px solid #E5E7EB' }}
+                >
+                  🚫 Out-of-Scope (Future)
+                </div>
+                <ul className="space-y-2">
+                  {['Group chat creation', 'Voice & video calls', 'Stickers & GIFs', 'End-to-end encryption'].map(i => (
+                    <li key={i} className="flex items-center gap-2 text-sm" style={{ color: '#9CA3AF' }}>
+                      <span>×</span> {i}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -92,13 +152,9 @@ export default function Examples() {
 
       </div>
 
-      <div className="pt-8 flex justify-between items-center border-t border-zinc-200 dark:border-zinc-800 mt-12">
-        <Link href="/core-components" className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">
-          &larr; အနောက်သို့
-        </Link>
-        <Link href="/templates" className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
-          နမူနာ ပုံစံခွက်များ ဆက်ဖတ်ရန် &rarr;
-        </Link>
+      <div className="flex justify-between items-center pt-4 border-t" style={{ borderColor: '#E5E7EB' }}>
+        <Link href="/core-components" className="btn-ghost">← {t('back')}</Link>
+        <Link href="/templates" className="btn-red">PRD Templates <ArrowRight size={14} /></Link>
       </div>
     </div>
   );

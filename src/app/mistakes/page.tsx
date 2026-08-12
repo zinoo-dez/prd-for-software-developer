@@ -1,108 +1,117 @@
+'use client';
+
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
+import { motion } from 'framer-motion';
+
+const mistakes = [
+  {
+    id: 1,
+    title: 'Over-specifying Technical Implementation',
+    problem: 'Writing things like "Add 3 new columns to the database" or "The API must return a JSON response" is a mistake. These are <strong>how</strong> decisions that belong in a Technical Design Document — not a PRD. A PRD defines <strong>what</strong> and <strong>why</strong>, not how.',
+    fix: 'In the PRD, focus on <strong>what the system must do</strong> and <strong>why it matters to the user</strong>. Let engineers decide how to build it.',
+  },
+  {
+    id: 2,
+    title: 'Undefined Scope (Scope Creep)',
+    problem: 'Failing to explicitly define what is <strong>out of scope</strong> is one of the leading causes of missed deadlines. When boundaries are fuzzy, stakeholders continuously request new features mid-sprint, causing scope creep that derails entire releases.',
+    fix: 'Treat the Out-of-Scope list with the same rigor as In-Scope. Every item deferred must be explicitly named and acknowledged by stakeholders.',
+  },
+  {
+    id: 3,
+    title: 'Missing Success Metrics',
+    problem: 'Shipping a feature without pre-defined success metrics means you have no way to know if it worked. Too many teams build, ship, and then ask "was it successful?" — without any baseline to compare against.',
+    fix: 'Define measurable KPIs before writing a single line of code. Set up analytics tracking early so you have baseline data ready at launch.',
+  },
+  {
+    id: 4,
+    title: 'Wall-of-Text Format',
+    problem: 'A 30–40 page document filled with dense paragraphs will not be read. When team members skip sections due to poor formatting, critical information is missed, leading to misalignment and costly rework.',
+    fix: 'Use bullet points, tables, numbered lists, and embedded visuals (wireframes, flow diagrams). A PRD that can be scanned in 5 minutes is far more effective than one that requires 2 hours to read.',
+  },
+  {
+    id: 5,
+    title: 'Writing in Isolation (No Stakeholder Input)',
+    problem: 'A PRD written by a PM alone — without input from Engineering, Design, or QA — often contains unrealistic requirements or misses critical technical constraints that surface only during development.',
+    fix: 'Involve all key stakeholders in the PRD review process before it is finalized. Run a kickoff session to validate requirements and surface constraints early.',
+  },
+];
 
 export default function Mistakes() {
+  const { t } = useLanguage();
+
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <div>
-        <h1 className="text-3xl font-extrabold tracking-tight mb-4 text-zinc-900 dark:text-white">
-          PRD ရေးသားရာတွင် အဖြစ်များသော အမှားများ
+    <div className="space-y-8 animate-in">
+
+      {/* Hero */}
+      <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+        <div className="badge-red mb-4">{t('mistakes_badge')}</div>
+        <h1 className="text-4xl font-extrabold tracking-tight mb-4" style={{ color: '#111827' }}>
+          {t('mistakes_h1')}
         </h1>
-        <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
-          PRD ဟာ Project ရဲ့ အောင်မြင်မှုအတွက် အရေးပါပေမယ့် အောက်ပါအမှားတွေကို ကျူးလွန်မိရင်တော့ ဆန့်ကျင်ဘက် အကျိုးသက်ရောက်မှု (Negative Impact) တွေ ဖြစ်လာနိုင်ပါတယ်။
-        </p>
+        <p className="text-lg leading-relaxed" style={{ color: '#374151' }}>{t('mistakes_intro')}</p>
       </div>
 
-      <div className="space-y-6 mt-8">
-        
-        {/* Mistake 1 */}
-        <div className="bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-900/30 rounded-xl p-6">
-          <div className="flex items-start gap-4">
-            <div className="text-2xl mt-1">❌</div>
-            <div>
-              <h2 className="text-xl font-bold text-red-900 dark:text-red-400 mb-2">
-                ၁။ နည်းပညာပိုင်း (Technical Info) တွေ အရမ်း ထည့်ရေးမိခြင်း
-              </h2>
-              <p className="text-red-900/80 dark:text-red-200/80 leading-relaxed mb-4">
-                "Database မှာ Column အသစ် ၃ ခု ထည့်ရမယ်"၊ "API ကနေ JSON Response ပြန်ရမယ်" စတဲ့ <strong>ဘယ်လို (How)</strong> လုပ်ရမလဲ ဆိုတဲ့ အပိုင်းက PRD မှာ ထည့်ရေးစရာ မလိုပါဘူး။ အဲဒါက Developer တွေ စဉ်းစားရမယ့် Technical Design Document အပိုင်းပါ။
-              </p>
-              <div className="bg-white/60 dark:bg-black/20 p-4 rounded-lg">
-                <p className="text-sm font-semibold text-green-700 dark:text-green-400">
-                  💡 အကြံပြုချက် - PRD မှာ System က <strong>"ဘာလုပ်ပေးရမလဲ (What)"</strong> နဲ့ <strong>"ဘာကြောင့်လုပ်တာလဲ (Why)"</strong> ကိုသာ အဓိကထား ရေးပါ။
+      {/* Mistakes list */}
+      <div className="space-y-4">
+        {mistakes.map(m => (
+          <motion.div 
+            key={m.id} 
+            whileHover={{ scale: 1.01, x: 4 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            className="card overflow-hidden"
+          >
+            {/* Dark header */}
+            <div className="flex items-center gap-4 px-6 py-4" style={{ background: '#111827' }}>
+              <span
+                className="w-7 h-7 rounded-full flex items-center justify-center text-sm shrink-0 font-bold"
+                style={{ background: '#DC2626', color: '#FFFFFF' }}
+              >
+                {m.id}
+              </span>
+              <h2 className="font-bold text-white">{m.title}</h2>
+            </div>
+
+            {/* White body */}
+            <div className="p-6 space-y-4">
+              {/* Problem */}
+              <div
+                className="p-4 rounded-xl"
+                style={{ background: '#FFF5F5', border: '1px solid #FECACA' }}
+              >
+                <p className="text-xs font-bold uppercase tracking-wide mb-2" style={{ color: '#DC2626' }}>
+                  ❌ The Problem
                 </p>
+                <p
+                  className="text-sm leading-relaxed"
+                  style={{ color: '#7F1D1D' }}
+                  dangerouslySetInnerHTML={{ __html: m.problem }}
+                />
+              </div>
+
+              {/* Fix */}
+              <div
+                className="p-4 rounded-xl"
+                style={{ background: '#F0FDF4', border: '1px solid #BBF7D0' }}
+              >
+                <p className="text-xs font-bold uppercase tracking-wide mb-2" style={{ color: '#15803D' }}>
+                  ✅ The Fix
+                </p>
+                <p
+                  className="text-sm leading-relaxed"
+                  style={{ color: '#14532D' }}
+                  dangerouslySetInnerHTML={{ __html: m.fix }}
+                />
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Mistake 2 */}
-        <div className="bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-900/30 rounded-xl p-6">
-          <div className="flex items-start gap-4">
-            <div className="text-2xl mt-1">❌</div>
-            <div>
-              <h2 className="text-xl font-bold text-red-900 dark:text-red-400 mb-2">
-                ၂။ Scope ရှင်းလင်းမှု မရှိခြင်း (Scope Creep ဖြစ်ခြင်း)
-              </h2>
-              <p className="text-red-900/80 dark:text-red-200/80 leading-relaxed mb-4">
-                ဒီ Release မှာ ဘာတွေ မပါဘူး (Out-of-scope) လဲဆိုတာ သေချာ မရေးထားရင်၊ လုပ်နေရင်းနဲ့ Feature သစ်တွေ ထပ်တောင်းလာတာ (Scope Creep) မျိုး ဖြစ်တတ်ပါတယ်။ ဒါဟာ Project ကို အချိန်မီ မပြီးစေတဲ့ အဓိက အကြောင်းရင်းပါ။
-              </p>
-              <div className="bg-white/60 dark:bg-black/20 p-4 rounded-lg">
-                <p className="text-sm font-semibold text-green-700 dark:text-green-400">
-                  💡 အကြံပြုချက် - Out-of-scope List ကို In-scope နည်းတူ အရေးတယူ စဉ်းစားပြီး သေချာချရေးထားပါ။
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Mistake 3 */}
-        <div className="bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-900/30 rounded-xl p-6">
-          <div className="flex items-start gap-4">
-            <div className="text-2xl mt-1">❌</div>
-            <div>
-              <h2 className="text-xl font-bold text-red-900 dark:text-red-400 mb-2">
-                ၃။ အောင်မြင်မှုကို တိုင်းတာမည့် အချက်များ (Success Metrics) မပါဝင်ခြင်း
-              </h2>
-              <p className="text-red-900/80 dark:text-red-200/80 leading-relaxed mb-4">
-                Feature တစ်ခုကို ရေးဆွဲဖြန့်ချိပြီးတဲ့အခါ ဒီ Feature အလုပ်ဖြစ်သလား၊ တကယ်ပဲ User တွေ အသုံးပြုသလား ဆိုတာကို တိုင်းတာဖို့ မေ့နေတတ်ကြပါတယ်။ Success Metrics မရှိရင် အလကားပါပဲ။
-              </p>
-              <div className="bg-white/60 dark:bg-black/20 p-4 rounded-lg">
-                <p className="text-sm font-semibold text-green-700 dark:text-green-400">
-                  💡 အကြံပြုချက် - Project မစခင်ကတည်းက တိုင်းတာမယ့် Data တွေကို သတ်မှတ်ထားပြီး Analytics Tools တွေနဲ့ အမြဲ စောင့်ကြည့်ပါ။
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Mistake 4 */}
-        <div className="bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-900/30 rounded-xl p-6">
-          <div className="flex items-start gap-4">
-            <div className="text-2xl mt-1">❌</div>
-            <div>
-              <h2 className="text-xl font-bold text-red-900 dark:text-red-400 mb-2">
-                ၄။ စာတွေ အရမ်းရှည်ပြီး ဖတ်ရခက်ခြင်း
-              </h2>
-              <p className="text-red-900/80 dark:text-red-200/80 leading-relaxed mb-4">
-                စာမျက်နှာ ၃၀, ၄၀ လောက်ရှိတဲ့ စာသားချည်းပဲသက်သက် PRD တွေကို ဘယ်သူမှ အဆုံးထိ မဖတ်ကြပါဘူး။ ဒါဆိုရင် နားလည်မှုလွဲမှားတာတွေ (Miscommunication) ဖြစ်လာနိုင်ပါတယ်။
-              </p>
-              <div className="bg-white/60 dark:bg-black/20 p-4 rounded-lg">
-                <p className="text-sm font-semibold text-green-700 dark:text-green-400">
-                  💡 အကြံပြုချက် - စာသားချည်းပဲ အရှည်ကြီး ရေးမယ့်အစား Bullet Points တွေ၊ ဇယား (Tables) တွေ၊ Mockups တွေနဲ့ Flow Charts တွေကို များများ အသုံးပြုပါ။
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
+          </motion.div>
+        ))}
       </div>
 
-      <div className="pt-8 flex justify-between items-center border-t border-zinc-200 dark:border-zinc-800 mt-12">
-        <Link href="/tools" className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">
-          &larr; အနောက်သို့
-        </Link>
-        <Link href="/" className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-zinc-900 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700 rounded-lg transition-colors">
-          ပင်မစာမျက်နှာသို့ ပြန်သွားရန် &uarr;
-        </Link>
+      <div className="flex justify-between items-center pt-4 border-t" style={{ borderColor: '#E5E7EB' }}>
+        <Link href="/tools" className="btn-ghost">← {t('back')}</Link>
+        <Link href="/" className="btn-ghost">{t('back_home')} <ArrowRight size={14} /></Link>
       </div>
     </div>
   );

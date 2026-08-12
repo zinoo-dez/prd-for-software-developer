@@ -1,0 +1,254 @@
+// Translations for Myanmar (mm) and English (en)
+export type Language = 'en' | 'mm';
+
+export const translations = {
+  en: {
+    // --- Navbar ---
+    nav_home: 'What is a PRD?',
+    nav_core: 'Core Components',
+    nav_examples: 'Examples',
+    nav_templates: 'Templates',
+    nav_tools: 'Tools',
+    nav_mistakes: 'Mistakes',
+    nav_ux: 'UX & Architecture',
+    nav_tech: 'Tech & QA',
+    nav_gtm: 'GTM Plan',
+    nav_risk: 'Maintenance & Risk',
+    nav_fundamentals: 'PRD Fundamentals',
+    nav_deliverables: 'Deliverables',
+    nav_ncc: 'NCC Guide',
+    site_title: 'PRD Guide',
+    site_subtitle: 'Product Documentation',
+    lang_toggle: 'မြန်မာ',
+
+    // --- Home Page ---
+    home_badge: 'PRD Fundamentals',
+    home_h1: 'What is a PRD?',
+    home_intro: 'A <strong>Product Requirements Document (PRD)</strong> is a standard specification document used in software development and product management. It precisely defines <em>what</em> a product should do, <em>how</em> it should work, and <em>why</em> it is being built — before a single line of code is written.',
+    home_analogy_title: '💡 The Blueprint Analogy',
+    home_analogy_body: 'Think of a PRD like the <strong>architectural blueprint</strong> for a building. Just as engineers cannot construct a house without precise plans, developers cannot build the right product without a well-crafted PRD as their guide.',
+    home_why_title: 'Why Write a PRD?',
+    home_card1_title: 'Align the Entire Team',
+    home_card1_body: 'Ensures that Product Managers, Developers, Designers, and QA teams all share the same understanding of what is being built and why.',
+    home_card2_title: 'Prevent Scope Creep',
+    home_card2_body: 'Keeps the project on track by clearly defining what is in-scope and out-of-scope, preventing unplanned features from derailing the timeline.',
+    home_card3_title: 'Single Source of Truth',
+    home_card3_body: 'Serves as the authoritative reference throughout the product lifecycle — from design to development, testing, and launch.',
+    home_card4_title: 'Measurable Success',
+    home_card4_body: 'Defines success metrics upfront so the team knows exactly when the product goals have been achieved after launch.',
+    home_cta: 'Explore Core PRD Components',
+
+    // --- Core Components ---
+    core_badge: 'Core Components',
+    core_h1: 'Essential Sections of a Standard PRD',
+    core_intro: 'A well-structured PRD typically contains the following <strong>8 core sections</strong>. Each plays a critical role in communicating product intent clearly across all stakeholders.',
+    core_s1_title: 'Metadata',
+    core_s2_title: 'Objective & Problem Statement',
+    core_s3_title: 'Target Audience',
+    core_s4_title: 'Scope',
+    core_s5_title: 'Requirements',
+    core_s6_title: 'User Experience & Design (UX/UI)',
+    core_s7_title: 'Success Metrics',
+    core_s8_title: 'Assumptions & Constraints',
+
+    // --- Examples ---
+    examples_badge: 'Real-World Examples',
+    examples_h1: 'PRD Examples in Practice',
+    examples_intro: 'Learning by example is one of the fastest ways to master PRD writing. Below are practical examples for the most common PRD sections to help you understand how to write them effectively.',
+
+    // --- Templates ---
+    templates_badge: 'PRD Templates',
+    templates_h1: 'Ready-to-Use PRD Templates',
+    templates_intro: "You don't need to write a PRD from scratch. Below are the standard templates used by product managers at leading tech companies.",
+
+    // --- Tools ---
+    tools_badge: 'Recommended Tools',
+    tools_h1: 'Tools for Writing & Managing PRDs',
+    tools_intro: 'The right tooling reduces friction and improves collaboration. Below are the most widely-used tools in product teams, organized by category.',
+
+    // --- Mistakes ---
+    mistakes_badge: 'Common Mistakes',
+    mistakes_h1: 'Critical PRD Mistakes to Avoid',
+    mistakes_intro: 'A poorly written PRD can be just as damaging as no PRD at all. These are the most common mistakes that derail projects — and how to avoid them.',
+
+    // --- UX Architecture ---
+    ux_badge: 'Essential Deliverable 1 of 4',
+    ux_h1: 'UX/UI & System Architecture Designs',
+    ux_intro: 'This deliverable transforms the abstract requirements in your PRD into concrete visual designs and technical architecture blueprints.',
+
+    // --- Tech Strategy ---
+    tech_badge: 'Essential Deliverable 2 of 4',
+    tech_h1: 'Technical & Quality Strategy',
+    tech_intro: 'This deliverable defines the technical decisions, quality standards, and deployment infrastructure that will carry your product from the first commit to production.',
+
+    // --- GTM Plan ---
+    gtm_badge: 'Essential Deliverable 3 of 4',
+    gtm_h1: 'Business Strategy & Go-To-Market Plan',
+    gtm_intro: 'Building a great product is only half the battle. This deliverable defines how you will reach your customers, generate revenue, and measure the business impact of your product once it launches.',
+
+    // --- Risk Management ---
+    risk_badge: 'Essential Deliverable 4 of 4',
+    risk_h1: 'Maintenance & Risk Management',
+    risk_intro: 'After launch, your product enters its most challenging phase. This deliverable prepares your team to handle security incidents, service outages, compliance requirements, and technical risks.',
+
+    // --- Common ---
+    back: '← Back',
+    back_home: 'Back to Home',
+    pro_tip: 'Pro Tip',
+    pro_tip_body: 'A great PRD integrates all deliverables into a single source of truth for your team.',
+
+    // --- NCC Guide ---
+    ncc_badge: 'Project Assessment',
+    ncc_h1: 'Cracking the NCC Project: Why Documentation is Your Golden Ticket',
+    ncc_intro: 'A comprehensive guide to the NCC Education Project Assessment Guidelines. Learn how to structure your documentation and secure top marks.',
+    ncc_q_title: 'Why is Documentation 70% and Coding 30%?',
+    ncc_q_body: 'In the professional world, <strong>code without context is unmaintainable</strong>. The NCC grading scheme reflects this reality. A working application proves you can code, but comprehensive documentation proves you can plan, analyze, test, and communicate — skills that define a true software engineer. The 70% allocated to documentation ensures you understand the <em>why</em> and <em>how</em> behind your product, not just the <em>what</em>.',
+    ncc_step_title: 'Step-by-Step Breakdown for Documentation',
+    ncc_step_intro: 'Follow this chapter structure to align perfectly with the NCC assessment criteria:',
+    ncc_ch1_title: '1. Introduction & Background',
+    ncc_ch1_body: 'Set the stage. Define the problem your project solves, the target audience, and the overarching objectives. State clearly what is in scope and out of scope.',
+    ncc_ch2_title: '2. Requirements & Design',
+    ncc_ch2_body: 'Detail the functional and non-functional requirements. Include use cases and User Interfaces (Wireframes/Mockups).',
+    ncc_ch3_title: '3. Data Architecture (ERD & Data Dictionary)',
+    ncc_ch3_body: 'Present your Entity-Relationship Diagram (ERD). Follow it with a Data Dictionary detailing every table, column, data type, and constraint.',
+    ncc_ch4_title: '4. Testing & QA',
+    ncc_ch4_body: 'Provide a rigorous test plan. Document your test cases using the Given-When-Then format, and include screenshots of test execution results.',
+    ncc_ch5_title: '5. Evaluation & Conclusion',
+    ncc_ch5_body: 'Critically evaluate your own work. What went well? What technical challenges did you overcome? What would you improve in version 2.0?',
+    ncc_tips_title: 'Pro-Tips for a High Distinction',
+    ncc_tip1_title: 'Consistency is Key',
+    ncc_tip1_body: 'Ensure your ERD exactly matches your database creation scripts and your application code. Inconsistencies here lose easy marks.',
+    ncc_tip2_title: 'Justify Your Choices',
+    ncc_tip2_body: 'Don\'t just state that you used React and Node.js. Explain <em>why</em> they were the best choices for this specific problem domain over alternatives.',
+    ncc_tip3_title: 'Visuals Matter',
+    ncc_tip3_body: 'Use clear, well-labeled diagrams (UML, Flowcharts, ERDs). A wall of text is hard to grade. Good diagrams show clarity of thought.',
+    ncc_tip4_title: 'Honest Evaluation',
+    ncc_tip4_body: 'Don\'t pretend your project is flawless. Examiners reward mature self-reflection. Acknowledging a flaw and explaining how you would fix it shows critical thinking.',
+  },
+
+  mm: {
+    // --- Navbar ---
+    nav_home: 'PRD ဆိုတာ ဘာလဲ?',
+    nav_core: 'Core Components',
+    nav_examples: 'Examples',
+    nav_templates: 'Templates',
+    nav_tools: 'Tools',
+    nav_mistakes: 'Mistakes',
+    nav_ux: 'UX & Architecture',
+    nav_tech: 'Tech & QA',
+    nav_gtm: 'GTM Plan',
+    nav_risk: 'Risk Management',
+    nav_fundamentals: 'PRD Fundamentals',
+    nav_deliverables: 'Deliverables',
+    nav_ncc: 'NCC Guide',
+    site_title: 'PRD Guide',
+    site_subtitle: 'Product Documentation',
+    lang_toggle: 'English',
+
+    // --- Home Page ---
+    home_badge: 'PRD Fundamentals',
+    home_h1: 'PRD (Product Requirements Document) ဆိုတာ ဘာလဲ?',
+    home_intro: '<strong>PRD</strong> သည် software development တွင် မရှိမဖြစ်လိုအပ်သော document တစ်ခုဖြစ်သည်။ Code တစ်ကြောင်းမျှ မရေးမီ Product သည် <em>ဘာ</em> ပြုလုပ်မည်၊ <em>မည်သို့</em> အလုပ်လုပ်မည် နှင့် <em>ဘာကြောင့်</em> တည်ဆောက်နေသည်ကို တိကျစွာ သတ်မှတ်ပေးသည်။',
+    home_analogy_title: '💡 Architecture နှိုင်းယှဉ်ချက်',
+    home_analogy_body: 'PRD ကို အဆောက်အဦးတစ်ခု၏ <strong>Blueprint</strong> ကဲ့သို့ မြင်ကြည့်ပါ။ Engineer များသည် တိကျသော blueprint မရှိဘဲ အိမ်တစ်လုံး မတည်ဆောက်နိုင်သကဲ့သို့ Developer များလည်း PRD မရှိဘဲ မှန်ကန်သော product ကို မတည်ဆောက်နိုင်ပါ။',
+    home_why_title: 'PRD ကို ဘာကြောင့် ရေးသင့်သလဲ?',
+    home_card1_title: 'Team တစ်ခုလုံး ညှိနှိုင်းနိုင်မှု',
+    home_card1_body: 'Product Manager များ၊ Developer များ၊ Designer များနှင့် QA team အားလုံး တည်ဆောက်မည့်အရာအပေါ် တူညီသော နားလည်မှု (alignment) ရရှိစေသည်။',
+    home_card2_title: 'Scope Creep တားဆီးခြင်း',
+    home_card2_body: 'Feature များကို အစီအစဉ်မရှိ ဖြည့်စွက်လာခြင်းကို တားဆီးကာ ဘာတွေပါဝင်မည် (in-scope) နှင့် မပါဝင်မည် (out-of-scope) ကို ရှင်းလင်းစွာ သတ်မှတ်ပေးသည်။',
+    home_card3_title: 'Single Source of Truth',
+    home_card3_body: 'Design မှ Development၊ Testing နှင့် Launch အထိ Product lifecycle တစ်ခုလုံးအတွက် အဓိက ကိုးကားစရာ reference အဖြစ် ဆောင်ရွက်သည်။',
+    home_card4_title: 'အောင်မြင်မှုကို တိုင်းတာနိုင်ခြင်း',
+    home_card4_body: 'Product launch ပြီးနောက် ရည်မှန်းချက်များ ပြည့်မီခြင်း ရှိမရှိ Team တစ်ခုလုံး သိရှိနိုင်ရန် Success Metrics များကို ကြိုတင်သတ်မှတ်ထားသည်။',
+    home_cta: 'PRD ၏ Core Components များ လေ့လာရန်',
+
+    // --- Core Components ---
+    core_badge: 'Core Components',
+    core_h1: 'Standard PRD ၏ မရှိမဖြစ် အပိုင်းများ',
+    core_intro: 'ကောင်းစွာဖွဲ့စည်းထားသော PRD တွင် ပုံမှန်အားဖြင့် <strong>အဓိက အပိုင်း ၈ ခု</strong> ပါဝင်သည်။ အဖွဲ့ဝင်အားလုံးထံ Product ၏ ရည်ရွယ်ချက်ကို ရှင်းလင်းစွာ ဆက်သွယ်ရာတွင် အပိုင်းတစ်ခုစီသည် အရေးကြီးသောအခန်းကဏ္ဍမှ ပါဝင်သည်။',
+    core_s1_title: 'Metadata',
+    core_s2_title: 'Purpose & Problem Statement',
+    core_s3_title: 'Target Audience',
+    core_s4_title: 'Scope (In-scope & Out-of-scope)',
+    core_s5_title: 'Requirements (Functional & Non-functional)',
+    core_s6_title: 'UX/UI & Design Guidelines',
+    core_s7_title: 'Success Metrics',
+    core_s8_title: 'Assumptions & Constraints',
+
+    // --- Examples ---
+    examples_badge: 'Real-world Examples',
+    examples_h1: 'PRD Examples အချို့',
+    examples_intro: 'Example များဖြင့် လေ့လာခြင်းသည် PRD ရေးသားခြင်းကို အမြန်ဆုံး ကျွမ်းကျင်နိုင်မည့် နည်းလမ်းဖြစ်သည်။',
+
+    // --- Templates ---
+    templates_badge: 'PRD Templates',
+    templates_h1: 'အသင့်အသုံးပြုနိုင်သော PRD Templates များ',
+    templates_intro: 'Top Tech ကုမ္ပဏီများမှ Product Manager များ အသုံးပြုလေ့ရှိသော Standard Templates များကို ဖော်ပြထားသည်။',
+
+    // --- Tools ---
+    tools_badge: 'Recommended Tools',
+    tools_h1: 'PRD ရေးသားရန် & စီမံရန် Tools များ',
+    tools_intro: 'သင့်တော်သော Tools များ အသုံးပြုခြင်းသည် အဖွဲ့အတွင်း ပူးပေါင်းဆောင်ရွက်မှု (Collaboration) ကို များစွာ မြှင့်တင်ပေးသည်။',
+
+    // --- Mistakes ---
+    mistakes_badge: 'Common Mistakes',
+    mistakes_h1: 'ရှောင်ကြဉ်သင့်သော PRD Mistakes များ',
+    mistakes_intro: 'ညံ့ဖျင်းစွာ ရေးသားထားသော PRD သည် Project ကို နှောင့်နှေးပျက်စီးစေနိုင်သည်။ ဤသည်မှာ အဖြစ်များဆုံး အမှားများနှင့် ၎င်းတို့ကို ရှောင်ရှားနည်းများဖြစ်သည်။',
+
+    // --- UX Architecture ---
+    ux_badge: 'Deliverable 1 of 4',
+    ux_h1: 'UX/UI နှင့် System Architecture',
+    ux_intro: 'ဤအဆင့်သည် PRD တွင် သတ်မှတ်ထားသော requirement များကို မြင်သာသော UI Design (Wireframes) နှင့် Technical Architecture Blueprint များအဖြစ် ပြောင်းလဲပေးသည်။',
+
+    // --- Tech Strategy ---
+    tech_badge: 'Deliverable 2 of 4',
+    tech_h1: 'Tech Strategy & QA',
+    tech_intro: 'ပထမဆုံး code commit မှ production launch အထိ product ကို ထောက်ပံ့မည့် နည်းပညာရွေးချယ်မှုများ၊ QA standards များနှင့် deployment plan များကို သတ်မှတ်သည်။',
+
+    // --- GTM Plan ---
+    gtm_badge: 'Deliverable 3 of 4',
+    gtm_h1: 'Go-To-Market (GTM) Plan',
+    gtm_intro: 'Product တစ်ခု တည်ဆောက်ခြင်းသည် အလုပ်၏ ထက်ဝက်သာဖြစ်သည်။ ဤအဆင့်သည် Launch လုပ်ပြီးနောက် User များကို မည်သို့ရယူမည်၊ Revenue မည်သို့ရှာမည်နှင့် Business impact ကို မည်သို့ တိုင်းတာမည်ကို သတ်မှတ်သည်။',
+
+    // --- Risk Management ---
+    risk_badge: 'Deliverable 4 of 4',
+    risk_h1: 'Maintenance & Risk Management',
+    risk_intro: 'Launch လုပ်ပြီးနောက် Product သည် အခက်ခဲဆုံးအဆင့်ကို ရောက်ရှိသည်။ Security risks၊ Downtimes၊ နှင့် Technical Debts များကို ဖြေရှင်းရန် Team ကို ကြိုတင်ပြင်ဆင်ပေးသည်။',
+
+    // --- Common ---
+    back: '← Back',
+    back_home: 'Back to Home',
+    pro_tip: 'Pro Tip',
+    pro_tip_body: 'ကောင်းမွန်သော PRD သည် သင့်အဖွဲ့အတွက် မှန်ကန်သော Single source of truth တစ်ခုအဖြစ် Deliverables အားလုံးကို ပေါင်းစပ်ပေးသည်။',
+
+    // --- NCC Guide ---
+    ncc_badge: 'Project Assessment',
+    ncc_h1: 'NCC Project အတွက် Documentation သည် ဘာကြောင့် အရေးကြီးသနည်း',
+    ncc_intro: 'NCC Education Project Assessment Guidelines ကို အခြေခံထားသော လမ်းညွှန်ချက်။ Documentation များကို မည်သို့ ဖွဲ့စည်းတည်ဆောက်ရမည်နှင့် အမြင့်ဆုံး အမှတ်များ မည်သို့ရယူရမည်ကို လေ့လာပါ။',
+    ncc_q_title: 'Documentation က ၇၀% နှင့် Coding က ၃၀% ဘာကြောင့် ဖြစ်ရသနည်း?',
+    ncc_q_body: 'Professional လောကတွင် <strong>context မပါသော Code သည် maintain လုပ်ရန် မဖြစ်နိုင်ပါ</strong>။ NCC အမှတ်ပေးစနစ်သည် ဤအမှန်တရားကို ထင်ဟပ်စေသည်။ အလုပ်လုပ်သော App တစ်ခုက သင် Code ရေးတတ်ကြောင်း သက်သေပြနိုင်သော်လည်း၊ ပြည့်စုံသော Documentation က သင်သည် စီစဉ်ခြင်း၊ Analyze လုပ်ခြင်း၊ Testing လုပ်ခြင်းနှင့် သေချာစွာ Communicate လုပ်နိုင်ကြောင်းကိုပါ သက်သေပြသည် — ယင်းတို့သည် စစ်မှန်သော Software Engineer တစ်ဦး၏ skills များဖြစ်သည်။ ၇၀% အမှတ်ပေးထားခြင်းသည် သင့် Product ၏ <em>ဘာလုပ်သလဲ</em> ဆိုသည်ကိုသာမက <em>ဘာကြောင့်</em> နှင့် <em>ဘယ်လို</em> အလုပ်လုပ်သည်ကိုပါ နားလည်ကြောင်း သေချာစေရန် ဖြစ်သည်။',
+    ncc_step_title: 'Documentation အတွက် Step-by-Step Breakdown',
+    ncc_step_intro: 'NCC Assessment criteria နှင့် ကိုက်ညီစေရန် ဤ Chapter structure ကို လိုက်နာပါ:',
+    ncc_ch1_title: '၁။ Introduction & Background',
+    ncc_ch1_body: 'သင့် Project ဖြေရှင်းပေးမည့် ပြဿနာ၊ Target Audience နှင့် အလုံးစုံ ရည်မှန်းချက်များကို သတ်မှတ်ပါ။ Scope ထဲတွင် ပါဝင်သည့်အရာနှင့် မပါဝင်သည့်အရာများကို ရှင်းလင်းစွာ ဖော်ပြပါ။',
+    ncc_ch2_title: '၂။ Requirements & Design',
+    ncc_ch2_body: 'Functional နှင့် Non-functional requirements များကို အသေးစိတ်ဖော်ပြပါ။ Use Cases များနှင့် UI (Wireframes/Mockups) များ ထည့်သွင်းပါ။',
+    ncc_ch3_title: '၃။ Data Architecture (ERD & Data Dictionary)',
+    ncc_ch3_body: 'Entity-Relationship Diagram (ERD) ကို တင်ပြပါ။ ထို့နောက် Table, Column, Data type နှင့် Constraint တိုင်းကို အသေးစိတ်ဖော်ပြသည့် Data Dictionary ဖြင့် လိုက်ပါဆောင်ရွက်ပါ။',
+    ncc_ch4_title: '၄။ Testing & QA',
+    ncc_ch4_body: 'ပြည့်စုံသော Test Plan တစ်ခု ပေးပါ။ Given-When-Then format ကို အသုံးပြု၍ Test Cases များကို မှတ်တမ်းတင်ပြီး Test Result Screenshot များ ထည့်သွင်းပါ။',
+    ncc_ch5_title: '၅။ Evaluation & Conclusion',
+    ncc_ch5_body: 'သင့် Project ကို ဝေဖန်ပိုင်းခြား အကဲဖြတ်ပါ။ ဘာတွေကောင်းခဲ့သလဲ? ဘယ်လို Technical Challenges တွေကို ကျော်လွှားနိုင်ခဲ့သလဲ? Version 2.0 မှာ ဘာတွေတိုးတက်အောင် လုပ်မလဲ?',
+    ncc_tips_title: 'High Distinction ရရှိရန် Pro-Tips များ',
+    ncc_tip1_title: 'Consistency က အဓိကပါ',
+    ncc_tip1_body: 'သင့် ERD သည် Database Creation Scripts များနှင့် Code တို့နှင့် အတိအကျ ကိုက်ညီကြောင်း သေချာစေပါ။ မကိုက်ညီမှုများသည် အမှတ်လွယ်လွယ် အလျော့ခံရစေသည်။',
+    ncc_tip2_title: 'ရွေးချယ်မှုများကို Justify လုပ်ပါ',
+    ncc_tip2_body: 'React နှင့် Node.js ကို သုံးခဲ့တယ်လို့ ရိုးရိုးလေး မရေးပါနဲ့။ ဤ Project ၏ ပြဿနာအတွက် တခြားနည်းပညာတွေထက် ၎င်းတို့က <em>ဘာကြောင့်</em> အကောင်းဆုံးဖြစ်ကြောင်း ရှင်းပြပါ။',
+    ncc_tip3_title: 'Visuals Matter (ပုံများ အရေးကြီးသည်)',
+    ncc_tip3_body: 'ရှင်းလင်းပြီး သေချာစွာ Label တပ်ထားသော Diagram များ (UML, Flowcharts, ERDs) ကို သုံးပါ။ စာသားသက်သက် အပြည့်ရေးထားပါက အမှတ်ပေးရန် ခက်ခဲသည်။ ကောင်းမွန်သော Diagram များက Clear thinking ကို ပြသသည်။',
+    ncc_tip4_title: 'Honest Evaluation (ရိုးသားစွာ အကဲဖြတ်ခြင်း)',
+    ncc_tip4_body: 'သင့် Project သည် Flawless ဖြစ်တယ်လို့ ဟန်မဆောင်ပါနဲ့။ Examiner များက ရင့်ကျက်သော ကိုယ့်ကိုယ်ကိုယ် ပြန်လည်သုံးသပ်ခြင်းကို နှစ်သက်သည်။ အားနည်းချက်ကို အသိအမှတ်ပြုပြီး ဘယ်လိုပြင်ဆင်မယ်ဆိုတာ ရှင်းပြခြင်းက Critical thinking ကို ပြသသည်။',
+  },
+} as const;
+
+export type TranslationKey = keyof typeof translations.en;

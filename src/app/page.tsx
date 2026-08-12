@@ -1,58 +1,97 @@
-import { BookOpen, Target, Users } from 'lucide-react';
+'use client';
+
+import { BookOpen, Target, Users, ArrowRight, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
+import { useLanguage } from '@/context/LanguageContext';
+import { motion } from 'framer-motion';
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <div>
-        <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 text-zinc-900 dark:text-white">
-          PRD (Product Requirements Document) ဆိုတာ ဘာလဲ?
+    <div className="space-y-8 animate-in">
+
+      {/* ── Hero ── 60% white bg */}
+      <div className="bg-white rounded-2xl p-8 md:p-12 border border-gray-100 shadow-sm">
+        <div className="badge-red mb-5">
+          <BookOpen size={11} />
+          {t('home_badge')}
+        </div>
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-5 leading-[1.1]" style={{ color: '#111827' }}>
+          {t('home_h1')}
         </h1>
-        <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
-          **PRD (Product Requirements Document)** ဆိုတာ Software Development နဲ့ Product Management နယ်ပယ်မှာ Product (သို့) Feature တစ်ခုကို မဖန်တီးခင်မှာ အဲဒီ Product က ဘာလုပ်ပေးနိုင်ရမယ်၊ ဘယ်လိုအလုပ်လုပ်ရမယ်၊ ဘာရည်ရွယ်ချက်နဲ့ လုပ်တာလဲ ဆိုတာတွေကို အသေးစိတ်ရေးသားထားတဲ့ **စံသတ်မှတ်ချက် စာတမ်း (Standard Document)** တစ်ခုဖြစ်ပါတယ်။
-        </p>
+        <p
+          className="text-lg leading-relaxed max-w-3xl mb-8"
+          style={{ color: '#374151' }}
+          dangerouslySetInnerHTML={{ __html: t('home_intro') }}
+        />
+        <Link href="/core-components" className="btn-red">
+          {t('home_cta')} <ArrowRight size={15} />
+        </Link>
       </div>
 
-      <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-600 p-6 rounded-r-xl">
-        <h3 className="font-semibold text-blue-900 dark:text-blue-300 text-lg mb-2">💡 အလွယ်ဆုံး မှတ်သားရန်</h3>
-        <p className="text-blue-800 dark:text-blue-200">
-          PRD ဆိုတာ အိမ်တစ်လုံးဆောက်တဲ့အခါ အင်ဂျင်နီယာတွေအတွက် လိုအပ်တဲ့ <strong className="font-bold">"ပုံစံတူ (Blueprint)"</strong> နဲ့ တူပါတယ်။ PRD သေချာရေးထားမှသာ Developer တွေက လိုချင်တဲ့ အရာကို အတိအကျ ဖန်တီးပေးနိုင်မှာ ဖြစ်ပါတယ်။
-        </p>
+      {/* ── Analogy callout ── 10% red left-border */}
+      <div className="callout-red">
+        <h3 className="font-bold mb-2 text-base" style={{ color: '#B91C1C' }}>
+          {t('home_analogy_title')}
+        </h3>
+        <p
+          className="leading-relaxed"
+          style={{ color: '#374151' }}
+          dangerouslySetInnerHTML={{ __html: t('home_analogy_body') }}
+        />
       </div>
 
-      <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-zinc-900 dark:text-white border-b border-zinc-200 dark:border-zinc-800 pb-2">
-          ဘာကြောင့် PRD ကို ရေးရတာလဲ? (ရည်ရွယ်ချက်)
-        </h2>
-        
-        <div className="grid sm:grid-cols-2 gap-4 mt-6">
-          <div className="bg-white dark:bg-zinc-900 p-5 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-sm">
-            <div className="w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600 flex items-center justify-center mb-3">
-              <Users size={20} />
-            </div>
-            <h3 className="font-semibold mb-2">နားလည်မှု တစ်ပြေးညီဖြစ်စေရန်</h3>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              Product Manager (PM), Developer တွေ၊ Designer တွေနဲ့ QA အဖွဲ့တွေအားလုံး ဘာကို တည်ဆောက်ရမလဲဆိုတာကို ရှင်းရှင်းလင်းလင်း သိရှိစေဖို့ ဖြစ်ပါတယ်။
-            </p>
-          </div>
+      {/* ── Why Write a PRD ── 30% dark header + 60% white cards */}
+      <div>
+        {/* Dark section header — 30% */}
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-1 h-8 rounded-full" style={{ background: '#DC2626' }} />
+          <h2 className="text-2xl font-bold" style={{ color: '#111827' }}>
+            {t('home_why_title')}
+          </h2>
+        </div>
 
-          <div className="bg-white dark:bg-zinc-900 p-5 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-sm">
-            <div className="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-600 flex items-center justify-center mb-3">
-              <Target size={20} />
-            </div>
-            <h3 className="font-semibold mb-2">ပန်းတိုင် ပျောက်မသွားစေရန်</h3>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              လုပ်ဆောင်နေရင်းနဲ့ မလိုအပ်တဲ့ Feature တွေ အလွန်အကျွံ ပါလာတာမျိုး (Scope Creep) မဖြစ်စေဖို့နဲ့ မူလရည်ရွယ်ချက်အတိုင်း ပြီးမြောက်စေဖို့ ဖြစ်ပါတယ်။
-            </p>
-          </div>
+        <div className="grid sm:grid-cols-2 gap-4">
+          {[
+            { icon: Users,      title: t('home_card1_title'), body: t('home_card1_body'), num: '01' },
+            { icon: Target,     title: t('home_card2_title'), body: t('home_card2_body'), num: '02' },
+            { icon: BookOpen,   title: t('home_card3_title'), body: t('home_card3_body'), num: '03' },
+            { icon: ArrowRight, title: t('home_card4_title'), body: t('home_card4_body'), num: '04' },
+          ].map(card => (
+            <motion.div 
+              key={card.num} 
+              whileHover={{ y: -5, scale: 1.015 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              className="card p-6 group cursor-pointer"
+            >
+              <div className="flex items-start justify-between mb-4">
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center"
+                  style={{ background: '#FEE2E2' }}
+                >
+                  <card.icon size={18} style={{ color: '#DC2626' }} />
+                </div>
+                <span className="text-xs font-bold" style={{ color: '#D1D5DB' }}>{card.num}</span>
+              </div>
+              <h3 className="font-semibold mb-2" style={{ color: '#111827' }}>{card.title}</h3>
+              <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>{card.body}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
 
-      <div className="pt-8">
-        <Link href="/core-components" className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
-          အဓိက ပါဝင်ရမည့် အချက်များ ဆက်ဖတ်ရန် &rarr;
+      {/* ── Dark strip CTA ── 30% dark */}
+      <div className="rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-4" style={{ background: '#111827' }}>
+        <div>
+          <p className="font-bold text-white text-lg">Ready to write your first PRD?</p>
+          <p className="text-sm mt-1" style={{ color: '#9CA3AF' }}>Start with core components and build from there.</p>
+        </div>
+        <Link href="/core-components" className="btn-red shrink-0">
+          Get Started <ArrowRight size={14} />
         </Link>
       </div>
+
     </div>
   );
 }
