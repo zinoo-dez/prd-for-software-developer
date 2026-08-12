@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "PRD Guide — Professional Product Documentation",
     description: "A comprehensive guide to writing Product Requirements Documents and essential software product deliverables for engineering teams.",
-    url: "https://prd-guide.vercel.app", // Replace with your actual domain
+    url: "https://learnprd.vercel.app", // Replace with your actual domain
     type: "website",
     images: [
       {
