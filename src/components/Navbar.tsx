@@ -234,41 +234,30 @@ export default function Navbar() {
 
             {/* Right controls */}
             <div className="flex items-center gap-2">
-              {/* Language Flag Selector */}
-              <div
-                id="lang-toggle-container"
-                className="flex items-center p-0.5 rounded-lg border text-xs font-semibold"
-                style={{ borderColor: '#374151', background: '#111827' }}
+              {/* Language Flag Toggle Button */}
+              <button
+                id="lang-toggle-btn"
+                onClick={toggleLanguage}
+                aria-label="Toggle language"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 hover:bg-gray-800 hover:border-gray-600 active:scale-95 shadow-xs"
+                style={{
+                  border: '1px solid #374151',
+                  color: '#F3F4F6',
+                  background: '#1F2937',
+                }}
               >
-                <button
-                  id="lang-en-btn"
-                  onClick={() => language !== 'en' && toggleLanguage()}
-                  aria-label="Switch to English"
-                  title="English"
-                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md transition-all duration-150 ${
-                    language === 'en'
-                      ? 'bg-red-600 text-white font-bold shadow-xs'
-                      : 'text-gray-400 hover:text-gray-200'
-                  }`}
-                >
-                  <UKFlag className="w-4 h-3" />
-                  <span className="hidden sm:inline">EN</span>
-                </button>
-                <button
-                  id="lang-mm-btn"
-                  onClick={() => language !== 'mm' && toggleLanguage()}
-                  aria-label="Switch to Myanmar"
-                  title="မြန်မာ"
-                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md transition-all duration-150 ${
-                    language === 'mm'
-                      ? 'bg-red-600 text-white font-bold shadow-xs'
-                      : 'text-gray-400 hover:text-gray-200'
-                  }`}
-                >
-                  <MyanmarFlag className="w-4 h-3" />
-                  <span className="hidden sm:inline">MM</span>
-                </button>
-              </div>
+                {language === 'en' ? (
+                  <>
+                    <MyanmarFlag className="w-4 h-3" />
+                    <span>မြန်မာ</span>
+                  </>
+                ) : (
+                  <>
+                    <UKFlag className="w-4 h-3" />
+                    <span>English</span>
+                  </>
+                )}
+              </button>
 
               {/* Mobile hamburger */}
               <button
@@ -370,33 +359,27 @@ export default function Navbar() {
                 {/* Mobile Language Switcher */}
                 <div className="pt-4 border-t mt-3 px-1 flex items-center justify-between" style={{ borderColor: '#374151' }}>
                   <span className="text-xs font-medium text-gray-400">Language / ဘာသာစကား</span>
-                  <div
-                    className="flex items-center p-0.5 rounded-lg border text-xs font-semibold"
-                    style={{ borderColor: '#374151', background: '#111827' }}
+                  <button
+                    onClick={toggleLanguage}
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 hover:bg-gray-800 shadow-xs"
+                    style={{
+                      border: '1px solid #374151',
+                      color: '#F3F4F6',
+                      background: '#111827',
+                    }}
                   >
-                    <button
-                      onClick={() => language !== 'en' && toggleLanguage()}
-                      className={`flex items-center gap-1.5 px-3 py-1 rounded-md transition-all duration-150 ${
-                        language === 'en'
-                          ? 'bg-red-600 text-white font-bold shadow-xs'
-                          : 'text-gray-400 hover:text-gray-200'
-                      }`}
-                    >
-                      <UKFlag className="w-4 h-3" />
-                      <span>English</span>
-                    </button>
-                    <button
-                      onClick={() => language !== 'mm' && toggleLanguage()}
-                      className={`flex items-center gap-1.5 px-3 py-1 rounded-md transition-all duration-150 ${
-                        language === 'mm'
-                          ? 'bg-red-600 text-white font-bold shadow-xs'
-                          : 'text-gray-400 hover:text-gray-200'
-                      }`}
-                    >
-                      <MyanmarFlag className="w-4 h-3" />
-                      <span>မြန်မာ</span>
-                    </button>
-                  </div>
+                    {language === 'en' ? (
+                      <>
+                        <MyanmarFlag className="w-4 h-3" />
+                        <span>မြန်မာ</span>
+                      </>
+                    ) : (
+                      <>
+                        <UKFlag className="w-4 h-3" />
+                        <span>English</span>
+                      </>
+                    )}
+                  </button>
                 </div>
               </div>
             </motion.div>
