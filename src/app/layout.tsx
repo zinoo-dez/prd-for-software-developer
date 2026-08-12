@@ -22,9 +22,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "PRD Guide — Professional Product Documentation",
     description: "A comprehensive guide to writing Product Requirements Documents and essential software product deliverables for engineering teams.",
-    url: "https://learnprd.vercel.app", // Replace with your actual domain
+    url: "https://learnprd.vercel.app",
     type: "website",
   },
+  ...(process.env.NEXT_PUBLIC_FACEBOOK_APP_ID ? {
+    facebook: {
+      appId: process.env.NEXT_PUBLIC_FACEBOOK_APP_ID,
+    },
+  } : {}),
 };
 
 export default function RootLayout({
