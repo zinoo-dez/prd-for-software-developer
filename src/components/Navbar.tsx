@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   FileText, LayoutTemplate, PenTool, AlertTriangle,
   Lightbulb, BookOpen, Layers, BarChart3, ShieldCheck, Cpu,
-  Menu, X, ChevronDown, Globe, Microscope
+  Menu, X, ChevronDown, Globe, Microscope, Database
 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -24,6 +24,7 @@ const getCoreNavItems = (t: ReturnType<typeof useLanguage>['t']) => [
 const getDeliverableNavItems = (t: ReturnType<typeof useLanguage>['t']) => [
   { name: t('nav_ux'), path: '/ux-architecture', icon: Layers },
   { name: t('nav_tech'), path: '/tech-strategy', icon: Cpu },
+  { name: t('nav_api'), path: '/api-database', icon: Database },
   { name: t('nav_gtm'), path: '/gtm-plan', icon: BarChart3 },
   { name: t('nav_risk'), path: '/risk-management', icon: ShieldCheck },
 ];

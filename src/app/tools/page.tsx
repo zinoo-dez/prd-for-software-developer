@@ -46,6 +46,26 @@ export default function Tools() {
         <p className="text-lg leading-relaxed" style={{ color: '#374151' }}>{t('tools_intro')}</p>
       </div>
 
+      {/* Featured Interactive Tool */}
+      <Link href="/tools/prd-builder" className="block">
+        <motion.div 
+          whileHover={{ scale: 1.01, y: -2 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          className="bg-gray-900 rounded-2xl p-6 md:p-8 flex items-center justify-between shadow-lg"
+        >
+          <div>
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-red-500/20 text-red-400 text-[10px] font-bold uppercase tracking-widest mb-3">
+              <PenTool size={12} /> {t('builder_badge')}
+            </div>
+            <h2 className="text-2xl font-bold text-white mb-2">{t('builder_h1')}</h2>
+            <p className="text-gray-400 text-sm max-w-xl leading-relaxed">{t('builder_intro')}</p>
+          </div>
+          <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-red-600 text-white">
+            <ArrowRight size={20} />
+          </div>
+        </motion.div>
+      </Link>
+
       {/* Categories */}
       <div className="space-y-5">
         {categories.map(cat => {

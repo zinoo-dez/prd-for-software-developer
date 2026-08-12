@@ -157,8 +157,18 @@ export default function Examples() {
             {t('ex_cases_intro')}
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
             {[
+              {
+                title: t('ex_sf_title'),
+                desc: t('ex_sf_desc'),
+                focus: 'Focus: Full standard PRD structure',
+                link: t('ex_cs1_link'),
+                href: '/examples/simple-feature',
+                color: '#F59E0B', // Amber
+                bg: '#FFFBEB',
+                border: '#FDE68A'
+              },
               {
                 title: t('ex_cs1_title'),
                 desc: t('ex_cs1_desc'),

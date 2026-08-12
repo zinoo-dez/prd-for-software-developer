@@ -1,12 +1,52 @@
 'use client';
 
 import Link from 'next/link';
-import { ExternalLink, ArrowRight } from 'lucide-react';
+import { ExternalLink, ArrowRight, Copy, Check } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 export default function Templates() {
   const { t } = useLanguage();
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const getMarkdownTemplate = () => {
+    return `# Product Requirements Document
+
+## 1. Metadata
+- **Project Name:** 
+- **Author:** 
+- **Date:** 
+- **Status:** Draft
+
+## 2. Objective & Problem Statement
+### Problem
+[Describe the user problem here]
+
+### Goal
+[Describe the business or user outcome]
+
+## 3. Scope
+### In-Scope
+- [Feature 1]
+- [Feature 2]
+
+### Out-of-Scope
+- [Feature 3]
+
+## 4. Requirements
+- **Req 1:** 
+
+## 5. Success Metrics
+- [Metric 1]
+`;
+  };
+
+  const handleCopy = (id: string) => {
+    navigator.clipboard.writeText(getMarkdownTemplate());
+    setCopiedId(id);
+    setTimeout(() => setCopiedId(null), 2000);
+  };
 
   const templates = [
     {
@@ -97,15 +137,24 @@ export default function Templates() {
             </div>
             <div className="p-6">
               <p className="text-sm leading-relaxed mb-5" style={{ color: '#6B7280' }}>{tpl.desc}</p>
-              <a
-                href={tpl.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-sm font-semibold gap-1 transition-colors"
-                style={{ color: '#DC2626' }}
-              >
-                {tpl.label} <ExternalLink size={13} />
-              </a>
+              <div className="flex items-center gap-4 mt-2">
+                <a
+                  href={tpl.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-sm font-semibold gap-1 transition-colors"
+                  style={{ color: '#DC2626' }}
+                >
+                  {tpl.label} <ExternalLink size={13} />
+                </a>
+                <button
+                  onClick={() => handleCopy(tpl.id)}
+                  className="inline-flex items-center text-sm font-semibold gap-1 transition-colors text-gray-500 hover:text-gray-900"
+                >
+                  {copiedId === tpl.id ? <Check size={13} className="text-green-600" /> : <Copy size={13} />}
+                  {copiedId === tpl.id ? t('b_copied') : t('tpl_btn_copy')}
+                </button>
+              </div>
             </div>
           </motion.div>
         ))}

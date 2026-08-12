@@ -1,12 +1,18 @@
 'use client';
 
 import Link from 'next/link';
-import { BookOpen, HelpCircle, Layers, CheckCircle2, ArrowRight, Target } from 'lucide-react';
+import { BookOpen, HelpCircle, Layers, CheckCircle2, ArrowRight, Target, CheckSquare, Square } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 export default function NccGuide() {
   const { t } = useLanguage();
+  const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>({});
+
+  const toggleCheck = (idx: number) => {
+    setCheckedItems(prev => ({ ...prev, [idx]: !prev[idx] }));
+  };
 
   return (
     <div className="space-y-8 animate-in">
@@ -144,6 +150,50 @@ export default function NccGuide() {
             </div>
           </div>
         </motion.div>
+
+        {/* 5. Checklist */}
+        <motion.div 
+          whileHover={{ scale: 1.01, x: 4 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          className="card"
+        >
+          <div className="card-header">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#DC2626' }}>
+              <CheckSquare size={16} className="text-white" />
+            </div>
+            <h2 className="font-bold">{t('ncc_chk_title')}</h2>
+          </div>
+          <div className="p-6">
+            <p className="text-sm leading-relaxed mb-6" style={{ color: '#374151' }}>{t('ncc_chk_intro')}</p>
+            
+            <div className="space-y-3">
+              {[
+                t('ncc_chk_1'),
+                t('ncc_chk_2'),
+                t('ncc_chk_3'),
+                t('ncc_chk_4')
+              ].map((item, idx) => {
+                const isChecked = checkedItems[idx] || false;
+                return (
+                  <div 
+                    key={idx}
+                    onClick={() => toggleCheck(idx)}
+                    className="flex items-start gap-3 p-4 rounded-xl cursor-pointer transition-all duration-200"
+                    style={{ background: isChecked ? '#F0FDF4' : '#F9FAFB', border: `1px solid ${isChecked ? '#BBF7D0' : '#E5E7EB'}` }}
+                  >
+                    <div className="mt-0.5 shrink-0" style={{ color: isChecked ? '#15803D' : '#9CA3AF' }}>
+                      {isChecked ? <CheckSquare size={18} /> : <Square size={18} />}
+                    </div>
+                    <span className={`text-sm font-medium transition-colors ${isChecked ? 'text-green-800' : 'text-gray-700'}`}>
+                      {item}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </motion.div>
+
       </div>
 
       <div className="flex justify-between items-center pt-4 border-t" style={{ borderColor: '#E5E7EB' }}>

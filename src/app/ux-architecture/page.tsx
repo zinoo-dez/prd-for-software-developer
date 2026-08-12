@@ -42,6 +42,7 @@ export default function UxArchitecture() {
       icon: GitBranch,
       title: t('ux_arch_title'),
       intro: t('ux_arch_intro'),
+      isArch: true,
       cards: [
         { label: t('ux_arch_front'), desc: t('ux_arch_front_desc') },
         { label: t('ux_arch_back'), desc: t('ux_arch_back_desc') },
@@ -57,6 +58,7 @@ export default function UxArchitecture() {
       icon: Database,
       title: t('ux_erd_title'),
       intro: t('ux_erd_intro'),
+      isERD: true,
       table: [
         { entity: t('ux_erd_user'), rel: t('ux_erd_user_rel'), card: t('ux_erd_user_card') },
         { entity: t('ux_erd_order'), rel: t('ux_erd_order_rel'), card: t('ux_erd_order_card') },
@@ -163,14 +165,52 @@ export default function UxArchitecture() {
                       </thead>
                       <tbody>
                         {sec.table.map((row, i) => (
-                          <tr key={i} className="border-b last:border-0" style={{ borderColor: '#E5E7EB' }}>
-                            <td className="px-4 py-3 font-medium" style={{ color: '#111827' }}>{row.entity}</td>
-                            <td className="px-4 py-3" style={{ color: '#6B7280' }}>{row.rel}</td>
-                            <td className="px-4 py-3 text-xs" style={{ color: '#374151' }}>{row.card}</td>
+                          <tr key={i} className="border-b last:border-b-0 border-gray-100 hover:bg-gray-50/50 transition-colors">
+                            <td className="px-4 py-3 font-medium text-gray-900">{row.entity}</td>
+                            <td className="px-4 py-3 text-gray-600 italic text-xs">{row.rel}</td>
+                            <td className="px-4 py-3 text-gray-900 font-mono text-xs">{row.card}</td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
+                  </div>
+                )}
+
+                {/* CSS Visuals */}
+                {sec.isArch && (
+                  <div className="mt-8 p-6 bg-gray-50 rounded-xl border border-gray-200">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+                      <div className="w-full text-center p-4 bg-white border border-gray-300 rounded-lg shadow-sm font-bold text-blue-800">
+                        Frontend (Next.js)
+                      </div>
+                      <ArrowRight className="hidden md:block text-gray-400 shrink-0" />
+                      <div className="w-full text-center p-4 bg-white border border-gray-300 rounded-lg shadow-sm font-bold text-green-800">
+                        API Gateway / Microservices
+                      </div>
+                      <ArrowRight className="hidden md:block text-gray-400 shrink-0" />
+                      <div className="w-full text-center p-4 bg-white border border-gray-300 rounded-lg shadow-sm font-bold text-purple-800">
+                        Database (PostgreSQL)
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {sec.isERD && (
+                  <div className="mt-8 p-6 bg-gray-50 rounded-xl border border-gray-200">
+                    <div className="flex justify-center items-center gap-8">
+                      <div className="border border-gray-300 rounded bg-white overflow-hidden shadow-sm w-40">
+                        <div className="bg-gray-800 text-white text-xs font-bold p-2 text-center">User</div>
+                        <div className="p-2 text-[10px] font-mono text-gray-600 border-t border-gray-100">id (PK)<br/>email<br/>password</div>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <span className="text-[10px] font-bold text-gray-500 mb-1">1 : N</span>
+                        <div className="h-px w-16 bg-gray-400"></div>
+                      </div>
+                      <div className="border border-gray-300 rounded bg-white overflow-hidden shadow-sm w-40">
+                        <div className="bg-gray-800 text-white text-xs font-bold p-2 text-center">Order</div>
+                        <div className="p-2 text-[10px] font-mono text-gray-600 border-t border-gray-100">id (PK)<br/>user_id (FK)<br/>total</div>
+                      </div>
+                    </div>
                   </div>
                 )}
 
