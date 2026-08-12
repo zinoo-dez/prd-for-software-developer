@@ -136,7 +136,7 @@ export default function CoreComponents() {
 
       {/* Nav footer */}
       <div className="flex justify-between items-center pt-4 border-t" style={{ borderColor: '#E5E7EB' }}>
-        <Link href="/" className="btn-ghost">← {t('back')}</Link>
+        <Link href="/" className="btn-ghost">{t('back')}</Link>
         <Link href="/examples" className="btn-red">Real-World Examples <ArrowRight size={14} /></Link>
       </div>
     </div>

@@ -153,7 +153,7 @@ export default function Examples() {
       </div>
 
       <div className="flex justify-between items-center pt-4 border-t" style={{ borderColor: '#E5E7EB' }}>
-        <Link href="/core-components" className="btn-ghost">← {t('back')}</Link>
+        <Link href="/core-components" className="btn-ghost">{t('back')}</Link>
         <Link href="/templates" className="btn-red">PRD Templates <ArrowRight size={14} /></Link>
       </div>
     </div>

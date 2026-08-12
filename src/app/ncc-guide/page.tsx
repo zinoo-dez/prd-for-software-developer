@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { BookOpen, HelpCircle, Layers, CheckCircle2, ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { motion } from 'framer-motion';
 
 export default function NccGuide() {
   const { t } = useLanguage();
@@ -25,7 +26,11 @@ export default function NccGuide() {
       <div className="space-y-6">
 
         {/* 1. Key Question */}
-        <div className="card">
+        <motion.div 
+          whileHover={{ scale: 1.01, x: 4 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          className="card"
+        >
           <div className="card-header">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#DC2626' }}>
               <HelpCircle size={16} className="text-white" />
@@ -41,10 +46,14 @@ export default function NccGuide() {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* 2. Step-by-Step Breakdown */}
-        <div className="card">
+        <motion.div 
+          whileHover={{ scale: 1.01, x: 4 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          className="card"
+        >
           <div className="card-header">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#DC2626' }}>
               <Layers size={16} className="text-white" />
@@ -69,10 +78,14 @@ export default function NccGuide() {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* 3. Pro Tips */}
-        <div className="card">
+        <motion.div 
+          whileHover={{ scale: 1.01, x: 4 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          className="card"
+        >
           <div className="card-header">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#DC2626' }}>
               <CheckCircle2 size={16} className="text-white" />
@@ -98,8 +111,7 @@ export default function NccGuide() {
               ))}
             </div>
           </div>
-        </div>
-
+        </motion.div>
       </div>
 
       <div className="flex justify-between items-center pt-4 border-t" style={{ borderColor: '#E5E7EB' }}>

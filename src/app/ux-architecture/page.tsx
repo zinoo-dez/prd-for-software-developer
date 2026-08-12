@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ArrowRight, Monitor, GitBranch, Database, Code2 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { motion } from 'framer-motion';
 
 export default function UxArchitecture() {
   const { t } = useLanguage();
@@ -84,7 +85,12 @@ export default function UxArchitecture() {
         {sections.map((sec, idx) => {
           const Icon = sec.icon;
           return (
-            <div key={sec.id} className="card">
+            <motion.div 
+              key={sec.id} 
+              whileHover={{ scale: 1.01, x: 4 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              className="card"
+            >
               {/* Dark Header */}
               <div className="card-header">
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#DC2626' }}>
@@ -167,13 +173,13 @@ export default function UxArchitecture() {
                   )}
                 </div>
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>
 
       <div className="flex justify-between items-center pt-4 border-t" style={{ borderColor: '#E5E7EB' }}>
-        <Link href="/mistakes" className="btn-ghost">← {t('back')}</Link>
+        <Link href="/mistakes" className="btn-ghost">{t('back')}</Link>
         <Link href="/tech-strategy" className="btn-red">Tech & QA Strategy <ArrowRight size={14} /></Link>
       </div>
     </div>

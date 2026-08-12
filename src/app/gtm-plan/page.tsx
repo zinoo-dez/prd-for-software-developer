@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ArrowRight, DollarSign, Megaphone, BarChart3 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { motion } from 'framer-motion';
 
 export default function GtmPlan() {
   const { t } = useLanguage();
@@ -22,7 +23,11 @@ export default function GtmPlan() {
       <div className="space-y-6">
 
         {/* 1. Monetization */}
-        <div className="card">
+        <motion.div 
+          whileHover={{ scale: 1.01, x: 4 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          className="card"
+        >
           <div className="card-header">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#DC2626' }}>
               <DollarSign size={16} className="text-white" />
@@ -77,10 +82,14 @@ export default function GtmPlan() {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* 2. GTM Strategy */}
-        <div className="card">
+        <motion.div 
+          whileHover={{ scale: 1.01, x: 4 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          className="card"
+        >
           <div className="card-header">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#DC2626' }}>
               <Megaphone size={16} className="text-white" />
@@ -110,10 +119,14 @@ export default function GtmPlan() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* 3. Success Metrics */}
-        <div className="card">
+        <motion.div 
+          whileHover={{ scale: 1.01, x: 4 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          className="card"
+        >
           <div className="card-header">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#DC2626' }}>
               <BarChart3 size={16} className="text-white" />
@@ -151,12 +164,12 @@ export default function GtmPlan() {
               </table>
             </div>
           </div>
-        </div>
+        </motion.div>
 
       </div>
 
       <div className="flex justify-between items-center pt-4 border-t" style={{ borderColor: '#E5E7EB' }}>
-        <Link href="/tech-strategy" className="btn-ghost">← {t('back')}</Link>
+        <Link href="/tech-strategy" className="btn-ghost">{t('back')}</Link>
         <Link href="/risk-management" className="btn-red">Maintenance & Risk <ArrowRight size={14} /></Link>
       </div>
     </div>

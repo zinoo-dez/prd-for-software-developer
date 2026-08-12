@@ -14,6 +14,12 @@ export const metadata: Metadata = {
   title: "PRD Guide — Professional Product Documentation",
   description:
     "A comprehensive guide to writing Product Requirements Documents and essential software product deliverables for engineering teams.",
+  openGraph: {
+    title: "PRD Guide — Professional Product Documentation",
+    description: "A comprehensive guide to writing Product Requirements Documents and essential software product deliverables for engineering teams.",
+    url: "https://prd-guide.example.com", // Replace with your actual domain
+    type: "website",
+  },
 };
 
 export default function RootLayout({

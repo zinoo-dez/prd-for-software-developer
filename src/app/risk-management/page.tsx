@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ShieldCheck, Clock, AlertTriangle, ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { motion } from 'framer-motion';
 
 export default function RiskManagement() {
   const { t } = useLanguage();
@@ -22,7 +23,11 @@ export default function RiskManagement() {
       <div className="space-y-6">
 
         {/* 1. Security Checklist */}
-        <div className="card">
+        <motion.div 
+          whileHover={{ scale: 1.01, x: 4 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          className="card"
+        >
           <div className="card-header">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#DC2626' }}>
               <ShieldCheck size={16} className="text-white" />
@@ -76,10 +81,14 @@ export default function RiskManagement() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* 2. SLA */}
-        <div className="card">
+        <motion.div 
+          whileHover={{ scale: 1.01, x: 4 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          className="card"
+        >
           <div className="card-header">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#DC2626' }}>
               <Clock size={16} className="text-white" />
@@ -116,10 +125,14 @@ export default function RiskManagement() {
               </table>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* 3. Risk Mitigation */}
-        <div className="card">
+        {/* 3. Incident Plan */}
+        <motion.div 
+          whileHover={{ scale: 1.01, x: 4 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          className="card"
+        >
           <div className="card-header">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#DC2626' }}>
               <AlertTriangle size={16} className="text-white" />
@@ -160,12 +173,12 @@ export default function RiskManagement() {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
 
       </div>
 
       <div className="flex justify-between items-center pt-4 border-t" style={{ borderColor: '#E5E7EB' }}>
-        <Link href="/gtm-plan" className="btn-ghost">← {t('back')}</Link>
+        <Link href="/gtm-plan" className="btn-ghost">{t('back')}</Link>
         <Link href="/" className="btn-ghost">{t('back_home')} <ArrowRight size={14} /></Link>
       </div>
     </div>
