@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   FileText, LayoutTemplate, PenTool, AlertTriangle,
   Lightbulb, BookOpen, Layers, BarChart3, ShieldCheck, Cpu,
-  Menu, X, ChevronDown, Globe
+  Menu, X, ChevronDown, Globe, Microscope
 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -16,6 +16,7 @@ const getCoreNavItems = (t: ReturnType<typeof useLanguage>['t']) => [
   { name: t('nav_core'), path: '/core-components', icon: FileText },
   { name: t('nav_examples'), path: '/examples', icon: Lightbulb },
   { name: t('nav_templates'), path: '/templates', icon: LayoutTemplate },
+  { name: t('nav_deep_dives'), path: '/deep-dives', icon: Microscope },
   { name: t('nav_tools'), path: '/tools', icon: PenTool },
   { name: t('nav_mistakes'), path: '/mistakes', icon: AlertTriangle },
 ];

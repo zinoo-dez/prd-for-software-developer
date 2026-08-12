@@ -148,6 +148,69 @@ export default function Examples() {
 
       </div>
 
+        {/* Real-World Case Studies */}
+        <div className="mt-12 pt-10 border-t" style={{ borderColor: '#E5E7EB' }}>
+          <h2 className="text-3xl font-extrabold tracking-tight mb-4" style={{ color: '#111827' }}>
+            {t('ex_cases_title')}
+          </h2>
+          <p className="text-lg leading-relaxed mb-8" style={{ color: '#374151' }}>
+            {t('ex_cases_intro')}
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                title: t('ex_cs1_title'),
+                desc: t('ex_cs1_desc'),
+                focus: t('ex_cs1_focus'),
+                link: t('ex_cs1_link'),
+                color: '#3B82F6', // Blue
+                bg: '#EFF6FF',
+                border: '#BFDBFE'
+              },
+              {
+                title: t('ex_cs2_title'),
+                desc: t('ex_cs2_desc'),
+                focus: t('ex_cs2_focus'),
+                link: t('ex_cs2_link'),
+                color: '#10B981', // Green
+                bg: '#ECFDF5',
+                border: '#A7F3D0'
+              },
+              {
+                title: t('ex_cs3_title'),
+                desc: t('ex_cs3_desc'),
+                focus: t('ex_cs3_focus'),
+                link: t('ex_cs3_link'),
+                color: '#8B5CF6', // Purple
+                bg: '#F5F3FF',
+                border: '#DDD6FE'
+              },
+            ].map((cs, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ y: -5 }}
+                className="flex flex-col h-full rounded-2xl overflow-hidden cursor-pointer"
+                style={{ background: '#FFFFFF', border: '1px solid #E5E7EB', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)' }}
+              >
+                <div className="h-2 w-full" style={{ background: cs.color }} />
+                <div className="p-6 flex flex-col grow">
+                  <h3 className="font-bold text-lg mb-2" style={{ color: '#111827' }}>{cs.title}</h3>
+                  <p className="text-sm mb-4 grow" style={{ color: '#4B5563' }}>{cs.desc}</p>
+                  
+                  <div className="px-3 py-2 rounded-lg text-xs font-medium mb-6" style={{ background: cs.bg, color: '#374151', border: `1px solid ${cs.border}` }}>
+                    {cs.focus}
+                  </div>
+                  
+                  <div className="mt-auto flex items-center text-sm font-semibold gap-1 transition-colors hover:opacity-80" style={{ color: cs.color }}>
+                    {cs.link} <ArrowRight size={14} />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
       <div className="flex justify-between items-center pt-4 border-t" style={{ borderColor: '#E5E7EB' }}>
         <Link href="/core-components" className="btn-ghost">{t('back')}</Link>
         <Link href="/templates" className="btn-red">{t('examples_nav_templates')} <ArrowRight size={14} /></Link>

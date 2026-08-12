@@ -16,6 +16,7 @@ export const translations = {
     nav_risk: 'Maintenance & Risk',
     nav_fundamentals: 'PRD Fundamentals',
     nav_deliverables: 'Deliverables',
+    nav_deep_dives: 'Deep Dives',
     nav_ncc: 'NCC Guide',
     site_title: 'PRD Guide',
     site_subtitle: 'Product Documentation',
@@ -118,6 +119,22 @@ export const translations = {
     ex3_out_3: 'Stickers & GIFs',
     ex3_out_4: 'End-to-end encryption',
     examples_nav_templates: 'PRD Templates',
+
+    // --- Examples: Case Studies ---
+    ex_cases_title: 'Real-World Case Studies',
+    ex_cases_intro: 'Beyond isolated examples, here is how a PRD structure looks for full real-world projects often encountered by freelancers and self-taught developers.',
+    ex_cs1_title: 'Case Study 1: E-Commerce Checkout Flow',
+    ex_cs1_desc: 'A scoped project to revamp the checkout experience.',
+    ex_cs1_focus: 'Focus: UX Edge Cases, Payment Integration, Cart Abandonment.',
+    ex_cs1_link: 'View Case Study',
+    ex_cs2_title: 'Case Study 2: B2B SaaS Dashboard',
+    ex_cs2_desc: 'An analytics dashboard for a multi-tenant SaaS application.',
+    ex_cs2_focus: 'Focus: Data Visualization, RBAC (Role-Based Access Control), API Performance.',
+    ex_cs2_link: 'View Case Study',
+    ex_cs3_title: 'Case Study 3: Freelance Client Portal',
+    ex_cs3_desc: 'A secure portal for clients to view project progress and invoices.',
+    ex_cs3_focus: 'Focus: Scope Containment, Simple Auth, Secure File Uploads.',
+    ex_cs3_link: 'View Case Study',
 
     // --- Templates ---
     templates_badge: 'PRD Templates',
@@ -258,6 +275,19 @@ export const translations = {
     ux_api_third_items_3: 'Analytics (Mixpanel)',
     ux_api_delivery_title: 'Documentation Tools',
     ux_api_delivery_desc: 'Swagger UI / OpenAPI (industry standard), Postman, Insomnia, Stoplight.',
+
+    // --- Deep Dives ---
+    deep_badge: 'Deep Dives',
+    deep_h1: 'Deep Dives for Freelancers & Solo Devs',
+    deep_intro: 'Moving from tutorials to real-world projects requires a deeper understanding of technical documentation. These deep dives cover the practical skills needed to design robust systems.',
+    deep_db_title: '1. Data Modeling & ERDs in Practice',
+    deep_db_desc: 'How to translate business requirements into a relational database schema. Stop guessing and start designing tables, relationships (1:N, N:M), and indexes before writing SQL.',
+    deep_api_title: '2. API Contract Design',
+    deep_api_desc: 'How to write API specs (RESTful or GraphQL) that frontend and backend developers can agree on. Learn to define request payloads, response schemas, and error codes explicitly.',
+    deep_arch_title: '3. System Architecture for Startups',
+    deep_arch_desc: 'Real-world architecture patterns. Understand when a simple Monolith (Next.js + Postgres) is enough, and when you actually need Microservices or Serverless components.',
+    deep_comm_title: '4. Communicating Tech to Clients',
+    deep_comm_desc: 'For freelancers: How to write Technical Specs that non-technical clients can understand, protecting yourself from scope creep while building trust.',
 
     // --- Tech Strategy ---
     tech_badge: 'Essential Deliverable 2 of 4',
@@ -535,6 +565,7 @@ export const translations = {
     nav_risk: 'Risk Management',
     nav_fundamentals: 'PRD Fundamentals',
     nav_deliverables: 'Deliverables',
+    nav_deep_dives: 'Deep Dives',
     nav_ncc: 'NCC Guide',
     site_title: 'PRD Guide',
     site_subtitle: 'Product Documentation',
@@ -637,6 +668,22 @@ export const translations = {
     ex3_out_3: 'Stickers နှင့် GIFs',
     ex3_out_4: 'End-to-end encryption (လုံခြုံရေး အဆင့်မြှင့်တင်ခြင်း)',
     examples_nav_templates: 'PRD Templates များ',
+
+    // --- Examples: Case Studies ---
+    ex_cases_title: 'လက်တွေ့ Case Studies များ',
+    ex_cases_intro: 'အပိုင်းတစ်ခုချင်းစီ ဥပမာများအပြင် Freelancer များနှင့် Self-taught Developer များ အများဆုံး ကြုံတွေ့ရလေ့ရှိသော လက်တွေ့ Project အပြည့်အစုံအတွက် PRD ဖွဲ့စည်းပုံများ ဖြစ်ပါသည်။',
+    ex_cs1_title: 'Case Study 1: E-Commerce Checkout Flow',
+    ex_cs1_desc: 'Checkout အတွေ့အကြုံကို အဆင့်မြှင့်တင်ရန် သတ်မှတ်ထားသော Project',
+    ex_cs1_focus: 'အဓိကထားသည့်အချက်များ: UX Edge Cases, Payment Integration, Cart Abandonment.',
+    ex_cs1_link: 'Case Study ကြည့်ရန်',
+    ex_cs2_title: 'Case Study 2: B2B SaaS Dashboard',
+    ex_cs2_desc: 'Multi-tenant SaaS application အတွက် Data ပြသမည့် Dashboard',
+    ex_cs2_focus: 'အဓိကထားသည့်အချက်များ: Data Visualization, RBAC (Role-Based Access Control), API Performance.',
+    ex_cs2_link: 'Case Study ကြည့်ရန်',
+    ex_cs3_title: 'Case Study 3: Freelance Client Portal',
+    ex_cs3_desc: 'Client များ Project အခြေအနေနှင့် Invoice များကြည့်ရန် လုံခြုံသော Portal',
+    ex_cs3_focus: 'အဓိကထားသည့်အချက်များ: Scope Containment, Simple Auth, Secure File Uploads.',
+    ex_cs3_link: 'Case Study ကြည့်ရန်',
 
     // --- Templates ---
     templates_badge: 'PRD Templates',
@@ -777,6 +824,19 @@ export const translations = {
     ux_api_third_items_3: 'Analytics (Mixpanel)',
     ux_api_delivery_title: 'Documentation Tools',
     ux_api_delivery_desc: 'Swagger UI / OpenAPI (လုပ်ငန်းသုံး စံနှုန်း), Postman, Insomnia, Stoplight.',
+
+    // --- Deep Dives ---
+    deep_badge: 'Deep Dives',
+    deep_h1: 'Freelancer များနှင့် Solo Dev များအတွက် အသေးစိတ်လေ့လာရန်',
+    deep_intro: 'Tutorial များမှ လက်တွေ့ Project များသို့ ကူးပြောင်းရာတွင် Technical Documentation ကို ပိုမိုနက်ရှိုင်းစွာ နားလည်ရန် လိုအပ်ပါသည်။ ခိုင်မာသော System များ တည်ဆောက်ရန် လိုအပ်သည့် လက်တွေ့ကျွမ်းကျင်မှုများကို ဤအပိုင်းတွင် လေ့လာနိုင်ပါသည်။',
+    deep_db_title: '1. Data Modeling နှင့် ERDs',
+    deep_db_desc: 'Business လိုအပ်ချက်များကို Relational Database Schema အဖြစ် မည်သို့ပြောင်းလဲမလဲ။ SQL မရေးမီ Table များ၊ Relationship (1:N, N:M) များနှင့် Index များကို စနစ်တကျ ဒီဇိုင်းဆွဲနည်း။',
+    deep_api_title: '2. API Contract Design',
+    deep_api_desc: 'Frontend နှင့် Backend Developer များ သဘောတူလက်ခံနိုင်သော API Specs များကို မည်သို့ရေးဆွဲမည်နည်း။ Request Payloads, Response Schemas နှင့် Error Codes များကို တိကျစွာ သတ်မှတ်နည်း။',
+    deep_arch_title: '3. Startup များအတွက် System Architecture',
+    deep_arch_desc: 'လက်တွေ့ Architecture ပုံစံများ။ ရိုးရှင်းသော Monolith (Next.js + Postgres) ဖြင့် လုံလောက်သည့် အခြေအနေနှင့် Microservices သို့မဟုတ် Serverless လိုအပ်သည့် အခြေအနေများကို ခွဲခြားနားလည်ခြင်း။',
+    deep_comm_title: '4. Client များကို နည်းပညာအကြောင်း ရှင်းပြခြင်း',
+    deep_comm_desc: 'Freelancer များအတွက်: နည်းပညာမကျွမ်းကျင်သော Client များ နားလည်နိုင်မည့် Technical Specs များ ရေးသားနည်း၊ Scope Creep မှ ကာကွယ်ပြီး ယုံကြည်မှု တည်ဆောက်နည်း။',
 
     // --- Tech Strategy ---
     tech_badge: 'Deliverable 2 of 4',
