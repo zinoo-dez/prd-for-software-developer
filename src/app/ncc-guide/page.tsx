@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { BookOpen, HelpCircle, Layers, CheckCircle2, ArrowRight } from 'lucide-react';
+import { BookOpen, HelpCircle, Layers, CheckCircle2, ArrowRight, Target } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { motion } from 'framer-motion';
 
@@ -48,7 +48,39 @@ export default function NccGuide() {
           </div>
         </motion.div>
 
-        {/* 2. Step-by-Step Breakdown */}
+        {/* 2. Marking Criteria Breakdown */}
+        <motion.div 
+          whileHover={{ scale: 1.01, x: 4 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          className="card"
+        >
+          <div className="card-header">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#DC2626' }}>
+              <Target size={16} className="text-white" />
+            </div>
+            <h2 className="font-bold">{t('ncc_rubric_title')}</h2>
+          </div>
+          <div className="p-6 space-y-4">
+            <p className="text-sm leading-relaxed mb-4" style={{ color: '#374151' }}>{t('ncc_rubric_intro')}</p>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                { title: t('ncc_rubric_c1_title'), body: t('ncc_rubric_c1_desc'), color: 'bg-red-50 border-red-100' },
+                { title: t('ncc_rubric_c2_title'), body: t('ncc_rubric_c2_desc'), color: 'bg-blue-50 border-blue-100' },
+                { title: t('ncc_rubric_c3_title'), body: t('ncc_rubric_c3_desc'), color: 'bg-green-50 border-green-100' },
+                { title: t('ncc_rubric_c4_title'), body: t('ncc_rubric_c4_desc'), color: 'bg-yellow-50 border-yellow-100' },
+                { title: t('ncc_rubric_c5_title'), body: t('ncc_rubric_c5_desc'), color: 'bg-purple-50 border-purple-100' },
+              ].map((c, idx) => (
+                <div key={idx} className={`p-4 rounded-xl border ${c.color}`}>
+                  <h3 className="font-bold text-sm mb-1 text-gray-900">{c.title}</h3>
+                  <p className="text-xs text-gray-600">{c.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* 3. Step-by-Step Breakdown */}
         <motion.div 
           whileHover={{ scale: 1.01, x: 4 }}
           transition={{ type: 'spring', stiffness: 300, damping: 20 }}
@@ -80,7 +112,7 @@ export default function NccGuide() {
           </div>
         </motion.div>
 
-        {/* 3. Pro Tips */}
+        {/* 4. Pro Tips */}
         <motion.div 
           whileHover={{ scale: 1.01, x: 4 }}
           transition={{ type: 'spring', stiffness: 300, damping: 20 }}
@@ -116,7 +148,7 @@ export default function NccGuide() {
 
       <div className="flex justify-between items-center pt-4 border-t" style={{ borderColor: '#E5E7EB' }}>
         <Link href="/" className="btn-ghost">← {t('back_home')}</Link>
-        <Link href="/core-components" className="btn-red">Core Components <ArrowRight size={14} /></Link>
+        <Link href="/core-components" className="btn-red">{t('nav_core')} <ArrowRight size={14} /></Link>
       </div>
     </div>
   );
