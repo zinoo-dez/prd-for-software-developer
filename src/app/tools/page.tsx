@@ -10,26 +10,26 @@ export default function Tools() {
 
   const categories = [
     {
-      id: 'docs', icon: PenTool, label: '1. Documentation',
+      id: 'docs', icon: PenTool, label: t('tl_cat1'),
       tools: [
-        { name: 'Confluence', desc: 'Enterprise standard — deeply integrated with Jira. Best for large engineering organizations.' },
-        { name: 'Notion', desc: 'Favored by modern startups. Flexible database views, Kanban boards, and team wikis in one place.' },
-        { name: 'Google Docs', desc: 'Simple entry point — excellent for real-time co-authoring and sharing with non-technical stakeholders.' },
+        { name: t('tl_cat1_1_n'), desc: t('tl_cat1_1_d') },
+        { name: t('tl_cat1_2_n'), desc: t('tl_cat1_2_d') },
+        { name: t('tl_cat1_3_n'), desc: t('tl_cat1_3_d') },
       ],
     },
     {
-      id: 'tickets', icon: CheckSquare, label: '2. Ticketing & Task Tracking',
-      intro: 'Used to break PRD requirements into developer-ready tasks, epics, and sprints for Agile execution.',
+      id: 'tickets', icon: CheckSquare, label: t('tl_cat2'),
+      intro: t('tl_cat2_intro'),
       tools: [
-        { name: 'Jira', desc: 'Industry-standard for Agile/Scrum teams. Supports sprints, epics, story points, and deep reporting.' },
-        { name: 'Linear / Asana', desc: 'Modern alternatives with superior UX. Linear is popular at high-velocity startups for its speed.' },
+        { name: t('tl_cat2_1_n'), desc: t('tl_cat2_1_d') },
+        { name: t('tl_cat2_2_n'), desc: t('tl_cat2_2_d') },
       ],
     },
     {
-      id: 'design', icon: ImageIcon, label: '3. Design & Wireframing',
+      id: 'design', icon: ImageIcon, label: t('tl_cat3'),
       tools: [
-        { name: 'Figma', desc: 'The #1 tool for UI/UX design. PRDs typically include Figma links for screen-by-screen designs and prototypes.' },
-        { name: 'Miro / FigJam', desc: 'Digital whiteboards for user flows, system architecture diagrams, and collaborative brainstorming.' },
+        { name: t('tl_cat3_1_n'), desc: t('tl_cat3_1_d') },
+        { name: t('tl_cat3_2_n'), desc: t('tl_cat3_2_d') },
       ],
     },
   ];
@@ -86,7 +86,7 @@ export default function Tools() {
 
       <div className="flex justify-between items-center pt-4 border-t" style={{ borderColor: '#E5E7EB' }}>
         <Link href="/templates" className="btn-ghost">{t('back')}</Link>
-        <Link href="/mistakes" className="btn-red">Common Mistakes <ArrowRight size={14} /></Link>
+        <Link href="/mistakes" className="btn-red">{t('tools_nav_mistakes')} <ArrowRight size={14} /></Link>
       </div>
     </div>
   );

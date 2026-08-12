@@ -5,41 +5,41 @@ import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { motion } from 'framer-motion';
 
-const mistakes = [
-  {
-    id: 1,
-    title: 'Over-specifying Technical Implementation',
-    problem: 'Writing things like "Add 3 new columns to the database" or "The API must return a JSON response" is a mistake. These are <strong>how</strong> decisions that belong in a Technical Design Document — not a PRD. A PRD defines <strong>what</strong> and <strong>why</strong>, not how.',
-    fix: 'In the PRD, focus on <strong>what the system must do</strong> and <strong>why it matters to the user</strong>. Let engineers decide how to build it.',
-  },
-  {
-    id: 2,
-    title: 'Undefined Scope (Scope Creep)',
-    problem: 'Failing to explicitly define what is <strong>out of scope</strong> is one of the leading causes of missed deadlines. When boundaries are fuzzy, stakeholders continuously request new features mid-sprint, causing scope creep that derails entire releases.',
-    fix: 'Treat the Out-of-Scope list with the same rigor as In-Scope. Every item deferred must be explicitly named and acknowledged by stakeholders.',
-  },
-  {
-    id: 3,
-    title: 'Missing Success Metrics',
-    problem: 'Shipping a feature without pre-defined success metrics means you have no way to know if it worked. Too many teams build, ship, and then ask "was it successful?" — without any baseline to compare against.',
-    fix: 'Define measurable KPIs before writing a single line of code. Set up analytics tracking early so you have baseline data ready at launch.',
-  },
-  {
-    id: 4,
-    title: 'Wall-of-Text Format',
-    problem: 'A 30–40 page document filled with dense paragraphs will not be read. When team members skip sections due to poor formatting, critical information is missed, leading to misalignment and costly rework.',
-    fix: 'Use bullet points, tables, numbered lists, and embedded visuals (wireframes, flow diagrams). A PRD that can be scanned in 5 minutes is far more effective than one that requires 2 hours to read.',
-  },
-  {
-    id: 5,
-    title: 'Writing in Isolation (No Stakeholder Input)',
-    problem: 'A PRD written by a PM alone — without input from Engineering, Design, or QA — often contains unrealistic requirements or misses critical technical constraints that surface only during development.',
-    fix: 'Involve all key stakeholders in the PRD review process before it is finalized. Run a kickoff session to validate requirements and surface constraints early.',
-  },
-];
-
 export default function Mistakes() {
   const { t } = useLanguage();
+
+  const mistakes = [
+    {
+      id: 1,
+      title: t('ms1_t'),
+      problem: t('ms1_p'),
+      fix: t('ms1_f'),
+    },
+    {
+      id: 2,
+      title: t('ms2_t'),
+      problem: t('ms2_p'),
+      fix: t('ms2_f'),
+    },
+    {
+      id: 3,
+      title: t('ms3_t'),
+      problem: t('ms3_p'),
+      fix: t('ms3_f'),
+    },
+    {
+      id: 4,
+      title: t('ms4_t'),
+      problem: t('ms4_p'),
+      fix: t('ms4_f'),
+    },
+    {
+      id: 5,
+      title: t('ms5_t'),
+      problem: t('ms5_p'),
+      fix: t('ms5_f'),
+    },
+  ];
 
   return (
     <div className="space-y-8 animate-in">
@@ -81,7 +81,7 @@ export default function Mistakes() {
                 style={{ background: '#FFF5F5', border: '1px solid #FECACA' }}
               >
                 <p className="text-xs font-bold uppercase tracking-wide mb-2" style={{ color: '#DC2626' }}>
-                  ❌ The Problem
+                  {t('ms_problem')}
                 </p>
                 <p
                   className="text-sm leading-relaxed"
@@ -96,7 +96,7 @@ export default function Mistakes() {
                 style={{ background: '#F0FDF4', border: '1px solid #BBF7D0' }}
               >
                 <p className="text-xs font-bold uppercase tracking-wide mb-2" style={{ color: '#15803D' }}>
-                  ✅ The Fix
+                  {t('ms_fix')}
                 </p>
                 <p
                   className="text-sm leading-relaxed"

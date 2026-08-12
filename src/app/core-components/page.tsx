@@ -12,55 +12,55 @@ export default function CoreComponents() {
     {
       num: 1, title: t('core_s1_title'),
       items: [
-        { label: 'Project Name', body: 'The official name of the product or feature' },
-        { label: 'Author', body: 'The writer (typically the Product Manager)' },
-        { label: 'Status', body: 'Current state (e.g. Draft, In Review, Approved)' },
-        { label: 'Target Release Date', body: 'Estimated launch date' },
+        { label: t('core_s1_i1_lbl'), body: t('core_s1_i1_bd') },
+        { label: t('core_s1_i2_lbl'), body: t('core_s1_i2_bd') },
+        { label: t('core_s1_i3_lbl'), body: t('core_s1_i3_bd') },
+        { label: t('core_s1_i4_lbl'), body: t('core_s1_i4_bd') },
       ],
     },
     {
       num: 2, title: t('core_s2_title'),
       items: [
-        { label: 'Problem Statement', body: 'What specific user pain point is this product solving?' },
-        { label: 'Objective/Goal', body: 'What business or user outcome does this product aim to achieve?' },
+        { label: t('core_s2_i1_lbl'), body: t('core_s2_i1_bd') },
+        { label: t('core_s2_i2_lbl'), body: t('core_s2_i2_bd') },
       ],
     },
     {
       num: 3, title: t('core_s3_title'),
-      body: 'Who will use this product? User Personas should be clearly defined with demographic and behavioral context.',
-      note: '(e.g. Online shoppers aged 20–35 who prefer mobile-first experiences)',
+      body: t('core_s3_body'),
+      note: t('core_s3_note'),
     },
     {
       num: 4, title: t('core_s4_title'),
       items: [
-        { label: 'In-Scope', body: 'What features and functionality will be included in this release?' },
-        { label: 'Out-of-Scope', body: 'What is explicitly excluded (deferred to future versions)?' },
+        { label: t('core_s4_i1_lbl'), body: t('core_s4_i1_bd') },
+        { label: t('core_s4_i2_lbl'), body: t('core_s4_i2_bd') },
       ],
     },
     {
-      num: 5, title: t('core_s5_title'), badge: 'Most Critical Section',
+      num: 5, title: t('core_s5_title'), badge: t('core_s5_badge'),
       items: [
-        { label: 'Functional Requirements', body: 'What must the system do? (e.g. Users can log in via email, reset passwords)' },
-        { label: 'Non-functional Requirements', body: 'Performance benchmarks, security standards, scalability expectations' },
+        { label: t('core_s5_i1_lbl'), body: t('core_s5_i1_bd') },
+        { label: t('core_s5_i2_lbl'), body: t('core_s5_i2_bd') },
       ],
     },
     {
       num: 6, title: t('core_s6_title'),
       items: [
-        { label: 'User Journey / User Flow', body: 'Step-by-step walkthrough of how users will interact with the product' },
-        { label: 'Designs', body: 'Wireframes, mockups, or Figma design links should be attached or referenced here' },
+        { label: t('core_s6_i1_lbl'), body: t('core_s6_i1_bd') },
+        { label: t('core_s6_i2_lbl'), body: t('core_s6_i2_bd') },
       ],
     },
     {
       num: 7, title: t('core_s7_title'),
-      body: 'How will you measure whether this product is successful after launch?',
-      note: '(e.g. Daily Active Users up 20%, Conversion rate improves by 5%, Checkout completion rate ≥ 90%)',
+      body: t('core_s7_body'),
+      note: t('core_s7_note'),
     },
     {
       num: 8, title: t('core_s8_title'),
       items: [
-        { label: 'Assumptions', body: 'Conditions presumed to be true when the project begins' },
-        { label: 'Constraints', body: 'Known limitations in time, budget, or technology that will affect delivery' },
+        { label: t('core_s8_i1_lbl'), body: t('core_s8_i1_bd') },
+        { label: t('core_s8_i2_lbl'), body: t('core_s8_i2_bd') },
       ],
     },
   ];
@@ -137,7 +137,7 @@ export default function CoreComponents() {
       {/* Nav footer */}
       <div className="flex justify-between items-center pt-4 border-t" style={{ borderColor: '#E5E7EB' }}>
         <Link href="/" className="btn-ghost">{t('back')}</Link>
-        <Link href="/examples" className="btn-red">Real-World Examples <ArrowRight size={14} /></Link>
+        <Link href="/examples" className="btn-red">{t('core_nav_examples')} <ArrowRight size={14} /></Link>
       </div>
     </div>
   );
