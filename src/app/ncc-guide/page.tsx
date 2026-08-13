@@ -1,18 +1,66 @@
 'use client';
 
 import Link from 'next/link';
-import { BookOpen, HelpCircle, Layers, CheckCircle2, ArrowRight, Target, CheckSquare, Square } from 'lucide-react';
+import { BookOpen, HelpCircle, Layers, CheckCircle2, ArrowRight, Target, CheckSquare, RotateCcw, Check, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function NccGuide() {
   const { t } = useLanguage();
   const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>({});
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Load state from localStorage on mount (SSR safe)
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('ncc_checklist_state');
+      if (saved) {
+        setCheckedItems(JSON.parse(saved));
+      }
+    } catch (e) {
+      console.error('Failed to load checklist state', e);
+    }
+    setIsLoaded(true);
+  }, []);
 
   const toggleCheck = (idx: number) => {
-    setCheckedItems(prev => ({ ...prev, [idx]: !prev[idx] }));
+    setCheckedItems(prev => {
+      const updated = { ...prev, [idx]: !prev[idx] };
+      try {
+        localStorage.setItem('ncc_checklist_state', JSON.stringify(updated));
+      } catch (e) {
+        console.error('Failed to save checklist state', e);
+      }
+      return updated;
+    });
   };
+
+  const selectAll = () => {
+    const allChecked: Record<number, boolean> = { 0: true, 1: true, 2: true, 3: true };
+    setCheckedItems(allChecked);
+    try {
+      localStorage.setItem('ncc_checklist_state', JSON.stringify(allChecked));
+    } catch (e) {}
+  };
+
+  const resetAll = () => {
+    setCheckedItems({});
+    try {
+      localStorage.removeItem('ncc_checklist_state');
+    } catch (e) {}
+  };
+
+  const items = [
+    { title: t('ncc_chk_1'), desc: t('ncc_chk_1_desc') },
+    { title: t('ncc_chk_2'), desc: t('ncc_chk_2_desc') },
+    { title: t('ncc_chk_3'), desc: t('ncc_chk_3_desc') },
+    { title: t('ncc_chk_4'), desc: t('ncc_chk_4_desc') },
+  ];
+  const totalItems = items.length;
+  const completedCount = Object.values(checkedItems).filter(Boolean).length;
+  const progressPercent = Math.round((completedCount / totalItems) * 100);
+  const isAllComplete = completedCount === totalItems;
 
   return (
     <div className="space-y-8 animate-in">
@@ -151,43 +199,145 @@ export default function NccGuide() {
           </div>
         </motion.div>
 
-        {/* 5. Checklist */}
+        {/* 5. Interactive Checklist */}
         <motion.div 
-          whileHover={{ scale: 1.01, x: 4 }}
+          whileHover={{ scale: 1.005, y: -2 }}
           transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-          className="card"
+          className="card shadow-sm"
         >
-          <div className="card-header">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#DC2626' }}>
-              <CheckSquare size={16} className="text-white" />
+          <div className="card-header flex justify-between items-center flex-wrap gap-2">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#DC2626' }}>
+                <CheckSquare size={16} className="text-white" />
+              </div>
+              <h2 className="font-bold">{t('ncc_chk_title')}</h2>
             </div>
-            <h2 className="font-bold">{t('ncc_chk_title')}</h2>
-          </div>
-          <div className="p-6">
-            <p className="text-sm leading-relaxed mb-6" style={{ color: '#374151' }}>{t('ncc_chk_intro')}</p>
             
+            {/* Quick Action Controls */}
+            <div className="flex items-center gap-2">
+              <button 
+                onClick={selectAll}
+                className="text-xs font-semibold px-2.5 py-1 rounded-md bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors flex items-center gap-1 cursor-pointer"
+              >
+                <CheckSquare size={13} />
+                {t('ncc_chk_select_all')}
+              </button>
+              <button 
+                onClick={resetAll}
+                className="text-xs font-semibold px-2.5 py-1 rounded-md bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors flex items-center gap-1 cursor-pointer"
+              >
+                <RotateCcw size={13} />
+                {t('ncc_chk_reset')}
+              </button>
+            </div>
+          </div>
+
+          <div className="p-6 space-y-6">
+            <p className="text-sm leading-relaxed" style={{ color: '#374151' }}>{t('ncc_chk_intro')}</p>
+
+            {/* Progress Meter & Bar */}
+            <div className="bg-gray-50 border border-gray-200/80 rounded-xl p-4 space-y-3">
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-gray-500">{t('ncc_chk_progress')}</span>
+                  <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full transition-colors ${
+                    isAllComplete ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-amber-100 text-amber-800 border border-amber-300'
+                  }`}>
+                    {isAllComplete ? `✓ ${t('ncc_chk_ready')}` : `${completedCount}/${totalItems} (${progressPercent}%)`}
+                  </span>
+                </div>
+                <span className="text-sm font-bold text-gray-800">{progressPercent}%</span>
+              </div>
+
+              {/* Progress Bar */}
+              <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden p-0.5">
+                <motion.div 
+                  className={`h-full rounded-full transition-colors duration-500 ${
+                    isAllComplete ? 'bg-gradient-to-r from-emerald-500 to-green-600' : progressPercent > 50 ? 'bg-gradient-to-r from-amber-500 to-emerald-500' : 'bg-gradient-to-r from-red-500 to-amber-500'
+                  }`}
+                  initial={{ width: 0 }}
+                  animate={{ width: `${progressPercent}%` }}
+                  transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+                />
+              </div>
+            </div>
+
+            {/* Completion Banner (Pops up when 100% complete) */}
+            {isAllComplete && (
+              <motion.div
+                initial={{ opacity: 0, y: -10, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+                className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 flex items-start gap-3 text-emerald-900 shadow-xs"
+              >
+                <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-white shrink-0 mt-0.5 shadow-xs">
+                  <Sparkles size={16} />
+                </div>
+                <div className="space-y-1">
+                  <h4 className="font-bold text-sm text-emerald-950 flex items-center gap-1.5">
+                    {t('ncc_chk_ready')}
+                  </h4>
+                  <p className="text-xs text-emerald-800 leading-relaxed">
+                    {t('ncc_chk_complete_banner')}
+                  </p>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Checklist Items */}
             <div className="space-y-3">
-              {[
-                t('ncc_chk_1'),
-                t('ncc_chk_2'),
-                t('ncc_chk_3'),
-                t('ncc_chk_4')
-              ].map((item, idx) => {
+              {items.map((item, idx) => {
                 const isChecked = checkedItems[idx] || false;
                 return (
-                  <div 
+                  <motion.div 
                     key={idx}
+                    whileTap={{ scale: 0.99 }}
                     onClick={() => toggleCheck(idx)}
-                    className="flex items-start gap-3 p-4 rounded-xl cursor-pointer transition-all duration-200"
-                    style={{ background: isChecked ? '#F0FDF4' : '#F9FAFB', border: `1px solid ${isChecked ? '#BBF7D0' : '#E5E7EB'}` }}
+                    className={`group flex items-start gap-4 p-4 rounded-xl cursor-pointer border transition-all duration-200 select-none ${
+                      isChecked 
+                        ? 'bg-emerald-50/70 border-emerald-300 shadow-xs' 
+                        : 'bg-white hover:bg-gray-50 border-gray-200'
+                    }`}
                   >
-                    <div className="mt-0.5 shrink-0" style={{ color: isChecked ? '#15803D' : '#9CA3AF' }}>
-                      {isChecked ? <CheckSquare size={18} /> : <Square size={18} />}
+                    {/* Custom Checkbox Indicator */}
+                    <div className="mt-0.5 shrink-0 flex items-center justify-center">
+                      <div className={`w-5 h-5 rounded-md border flex items-center justify-center transition-all duration-200 ${
+                        isChecked 
+                          ? 'bg-emerald-600 border-emerald-600 text-white shadow-xs' 
+                          : 'border-gray-300 group-hover:border-red-400 bg-white'
+                      }`}>
+                        {isChecked && (
+                          <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ type: 'spring', stiffness: 500, damping: 25 }}
+                          >
+                            <Check size={14} strokeWidth={3} />
+                          </motion.div>
+                        )}
+                      </div>
                     </div>
-                    <span className={`text-sm font-medium transition-colors ${isChecked ? 'text-green-800' : 'text-gray-700'}`}>
-                      {item}
-                    </span>
-                  </div>
+
+                    <div className="space-y-1 flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className={`text-sm font-semibold transition-colors duration-200 ${
+                          isChecked ? 'text-emerald-900 line-through decoration-emerald-500/60' : 'text-gray-900 group-hover:text-red-700'
+                        }`}>
+                          {item.title}
+                        </span>
+                        {isChecked && (
+                          <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full border border-emerald-200 shrink-0 ml-2">
+                            Done
+                          </span>
+                        )}
+                      </div>
+                      <p className={`text-xs leading-relaxed transition-colors duration-200 ${
+                        isChecked ? 'text-emerald-700/80' : 'text-gray-500'
+                      }`}>
+                        {item.desc}
+                      </p>
+                    </div>
+                  </motion.div>
                 );
               })}
             </div>

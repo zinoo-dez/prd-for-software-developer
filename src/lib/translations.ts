@@ -592,6 +592,16 @@ export const translations = {
     ncc_chk_2: 'Are all test cases documented with Given-When-Then?',
     ncc_chk_3: 'Is the system architecture diagram included?',
     ncc_chk_4: 'Did you evaluate technical challenges honestly?',
+    ncc_chk_progress: 'Checklist Progress',
+    ncc_chk_ready: 'Ready for Submission!',
+    ncc_chk_incomplete: 'In Progress',
+    ncc_chk_select_all: 'Select All',
+    ncc_chk_reset: 'Reset',
+    ncc_chk_complete_banner: '🎉 Great job! All checklist items are completed. Your PRD documentation is ready for NCC submission.',
+    ncc_chk_1_desc: 'Cross-check entity names, primary keys, and foreign keys between your ERD diagram and .sql schema script.',
+    ncc_chk_2_desc: 'Ensure every scenario has clear GIVEN (preconditions), WHEN (actions), and THEN (expected outcomes).',
+    ncc_chk_3_desc: 'Include high-level component diagrams showing Frontend, Backend, DB, and external integrations.',
+    ncc_chk_4_desc: 'Outline real risks, performance bottlenecks, edge cases, and architectural trade-offs.',
   },
 
   mm: {
@@ -1184,6 +1194,16 @@ export const translations = {
     ncc_chk_2: 'Test case အားလုံးကို Given-When-Then ဖြင့် မှတ်တမ်းတင်ထားပါသလား?',
     ncc_chk_3: 'System architecture diagram ပါဝင်ပါသလား?',
     ncc_chk_4: 'နည်းပညာ အခက်အခဲများကို ရိုးသားစွာ အကဲဖြတ်ထားပါသလား?',
+    ncc_chk_progress: 'စစ်ဆေးပြီးစီးမှု ပမာဏ',
+    ncc_chk_ready: 'တင်သွင်းရန် အဆင်သင့်ဖြစ်ပါပြီ!',
+    ncc_chk_incomplete: 'လုပ်ဆောင်နေဆဲ',
+    ncc_chk_select_all: 'အားလုံး ရွေးမည်',
+    ncc_chk_reset: 'ပြန်စမည်',
+    ncc_chk_complete_banner: '🎉 ဂုဏ်ယူပါတယ်! စစ်ဆေးရမည့် အချက်များ အားလုံး ပြီးစီးပါပြီ။ သင်၏ PRD ကို NCC သို့ တင်သွင်းနိုင်ပါပြီ။',
+    ncc_chk_1_desc: 'ERD ပုံပါ Entity အမည်များ၊ Primary Key နှင့် Foreign Key များကို .sql script နှင့် တိုက်ဆိုင် စစ်ဆေးပါ။',
+    ncc_chk_2_desc: 'လုပ်ဆောင်ချက် တိုင်းအတွက် GIVEN (အခြေအနေ)၊ WHEN (လုပ်ဆောင်ချက်) နှင့် THEN (ရလဒ်) တို့ ပါဝင်ကြောင်း သေချာပါစေ။',
+    ncc_chk_3_desc: 'Frontend, Backend, DB နှင့် ပြင်ပစနစ် ချိတ်ဆက်မှုများ ပါဝင်သော System Architecture Diagram ကို ထည့်သွင်းပါ။',
+    ncc_chk_4_desc: 'ဖြစ်နိုင်ခြေရှိသော စိန်ခေါ်မှုများ၊ အားနည်းချက်များနှင့် နည်းပညာ အလဲအထပ်များကို မှန်ကန်စွာ ဖော်ပြပါ။',
   },
 } as const;
 
