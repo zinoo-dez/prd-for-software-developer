@@ -12,7 +12,7 @@ import {
 import { useLanguage } from '@/context/LanguageContext';
 
 const MyanmarFlag = ({ className = "w-4 h-3" }: { className?: string }) => (
-  <svg viewBox="0 0 18 12" className={`${className} rounded-[2px] overflow-hidden inline-block shrink-0 shadow-xs`} aria-hidden="true">
+  <svg viewBox="0 0 18 12" className={`${className} rounded-xs overflow-hidden inline-block shrink-0 shadow-xs`} aria-hidden="true">
     <rect width="18" height="4" y="0" fill="#FECB00" />
     <rect width="18" height="4" y="4" fill="#34B233" />
     <rect width="18" height="4" y="8" fill="#EA2839" />
@@ -21,7 +21,7 @@ const MyanmarFlag = ({ className = "w-4 h-3" }: { className?: string }) => (
 );
 
 const UKFlag = ({ className = "w-4 h-3" }: { className?: string }) => (
-  <svg viewBox="0 0 60 30" className={`${className} rounded-[2px] overflow-hidden inline-block shrink-0 shadow-xs`} aria-hidden="true">
+  <svg viewBox="0 0 60 30" className={`${className} rounded-xs overflow-hidden inline-block shrink-0 shadow-xs`} aria-hidden="true">
     <clipPath id="uk-flag-clip-nav">
       <rect width="60" height="30" />
     </clipPath>

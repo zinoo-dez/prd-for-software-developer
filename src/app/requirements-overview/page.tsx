@@ -152,7 +152,7 @@ export default function RequirementsOverview() {
         </div>
 
         <div className="p-6 overflow-x-auto">
-          <table className="w-full text-left text-sm border-collapse min-w-[760px]">
+          <table className="w-full text-left text-sm border-collapse min-w-190">
             <thead>
               <tr className="bg-gray-900 text-white">
                 <th className="p-3.5 rounded-tl-lg font-bold text-xs uppercase">Document</th>
