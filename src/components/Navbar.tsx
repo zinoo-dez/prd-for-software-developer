@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   FileText, LayoutTemplate, PenTool, AlertTriangle,
   Lightbulb, BookOpen, Layers, BarChart3, ShieldCheck, Cpu,
-  Menu, X, ChevronDown, Globe, Microscope, Database
+  Menu, X, ChevronDown, Globe, Microscope, Database, CheckSquare
 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -35,6 +35,13 @@ const UKFlag = ({ className = "w-4 h-3" }: { className?: string }) => (
   </svg>
 );
 
+const getRequirementsNavItems = (t: ReturnType<typeof useLanguage>['t']) => [
+  { name: t('nav_req_overview'), path: '/requirements-overview', icon: Layers },
+  { name: t('nav_brd'), path: '/brd-guide', icon: BarChart3 },
+  { name: t('nav_srs'), path: '/srs-guide', icon: Cpu },
+  { name: t('nav_stories'), path: '/user-stories', icon: CheckSquare },
+];
+
 const getCoreNavItems = (t: ReturnType<typeof useLanguage>['t']) => [
   { name: t('nav_home'), path: '/', icon: BookOpen },
   { name: t('nav_core'), path: '/core-components', icon: FileText },
@@ -58,9 +65,11 @@ export default function Navbar() {
   const { t, toggleLanguage, language } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [requirementsOpen, setRequirementsOpen] = useState(false);
   const [deliverablesOpen, setDeliverablesOpen] = useState(false);
   const [fundamentalsOpen, setFundamentalsOpen] = useState(false);
 
+  const reqNavItems = getRequirementsNavItems(t);
   const coreNavItems = getCoreNavItems(t);
   const deliverableNavItems = getDeliverableNavItems(t);
 
@@ -72,10 +81,12 @@ export default function Navbar() {
 
   useEffect(() => {
     setMenuOpen(false);
+    setRequirementsOpen(false);
     setDeliverablesOpen(false);
     setFundamentalsOpen(false);
   }, [pathname]);
 
+  const isRequirementsPath = reqNavItems.some(i => i.path === pathname);
   const isDeliverablePath = deliverableNavItems.some(i => i.path === pathname);
   const isFundamentalsPath = coreNavItems.some(i => i.path === pathname);
   const isNccPath = pathname === '/ncc-guide';
@@ -123,14 +134,70 @@ export default function Navbar() {
                 {t('nav_ncc')}
               </Link>
 
+              {/* Requirements Suite Dropdown (BRD, PRD, SRS, User Stories) */}
+              <div className="relative">
+                <button
+                  onClick={() => {
+                    setRequirementsOpen(p => !p);
+                    setFundamentalsOpen(false);
+                    setDeliverablesOpen(false);
+                  }}
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 cursor-pointer"
+                  style={{
+                    color: isRequirementsPath ? '#FFFFFF' : '#9CA3AF',
+                    background: isRequirementsPath ? '#DC2626' : 'transparent',
+                  }}
+                >
+                  {t('nav_req_suite')}
+                  <ChevronDown
+                    size={13}
+                    className={`transition-transform duration-200 ${requirementsOpen ? 'rotate-180' : ''}`}
+                  />
+                </button>
+
+                <AnimatePresence>
+                  {requirementsOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 6, scale: 0.97 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 6, scale: 0.97 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute top-full mt-2 left-0 w-60 rounded-xl overflow-hidden shadow-xl"
+                      style={{ background: '#1F2937', border: '1px solid #374151' }}
+                    >
+                      {reqNavItems.map(item => {
+                        const Icon = item.icon;
+                        const isActive = pathname === item.path;
+                        return (
+                          <Link
+                            key={item.path}
+                            href={item.path}
+                            onClick={() => setRequirementsOpen(false)}
+                            className="flex items-center gap-2.5 px-4 py-3 text-sm transition-colors duration-150"
+                            style={{
+                              color: isActive ? '#FFFFFF' : '#9CA3AF',
+                              background: isActive ? '#DC2626' : 'transparent',
+                            }}
+                          >
+                            <Icon size={14} />
+                            {item.name}
+                          </Link>
+                        );
+                      })}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
               {/* PRD Fundamentals Dropdown */}
               <div className="relative">
                 <button
                   onClick={() => {
                     setFundamentalsOpen(p => !p);
+                    setRequirementsOpen(false);
                     setDeliverablesOpen(false);
                   }}
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150"
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 cursor-pointer"
                   style={{
                     color: isFundamentalsPath ? '#FFFFFF' : '#9CA3AF',
                     background: isFundamentalsPath ? '#DC2626' : 'transparent',
@@ -182,9 +249,10 @@ export default function Navbar() {
                 <button
                   onClick={() => {
                     setDeliverablesOpen(p => !p);
+                    setRequirementsOpen(false);
                     setFundamentalsOpen(false);
                   }}
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150"
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 cursor-pointer"
                   style={{
                     color: isDeliverablePath ? '#FFFFFF' : '#9CA3AF',
                     background: isDeliverablePath ? '#DC2626' : 'transparent',
@@ -306,9 +374,9 @@ export default function Navbar() {
                 </Link>
 
                 <p className="text-[10px] font-bold uppercase tracking-widest px-3 pb-2 border-t pt-3" style={{ color: '#6B7280', borderColor: '#374151' }}>
-                  {t('nav_fundamentals')}
+                  {t('nav_req_suite')}
                 </p>
-                {coreNavItems.map(item => {
+                {reqNavItems.map(item => {
                   const Icon = item.icon;
                   const isActive = pathname === item.path;
                   return (
@@ -326,6 +394,31 @@ export default function Navbar() {
                     </Link>
                   );
                 })}
+
+                <div className="pt-3">
+                  <p className="text-[10px] font-bold uppercase tracking-widest px-3 pb-2" style={{ color: '#6B7280' }}>
+                    {t('nav_fundamentals')}
+                  </p>
+                  {coreNavItems.map(item => {
+                    const Icon = item.icon;
+                    const isActive = pathname === item.path;
+                    return (
+                      <Link
+                        key={item.path}
+                        href={item.path}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors"
+                        style={{
+                          background: isActive ? '#DC2626' : 'transparent',
+                          color: isActive ? '#FFFFFF' : '#9CA3AF',
+                        }}
+                      >
+                        <Icon size={14} />
+                        {item.name}
+                      </Link>
+                    );
+                  })}
+                </div>
+
                 <div className="pt-3">
                   <p className="text-[10px] font-bold uppercase tracking-widest px-3 pb-2" style={{ color: '#6B7280' }}>
                     {t('nav_deliverables')}
@@ -376,10 +469,11 @@ export default function Navbar() {
         </AnimatePresence>
       </header>
 
-      {(deliverablesOpen || fundamentalsOpen) && (
+      {(deliverablesOpen || fundamentalsOpen || requirementsOpen) && (
         <div className="fixed inset-0 z-40" onClick={() => {
           setDeliverablesOpen(false);
           setFundamentalsOpen(false);
+          setRequirementsOpen(false);
         }} />
       )}
     </>

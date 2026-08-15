@@ -3,7 +3,8 @@
 import { 
   BookOpen, Target, Users, ArrowRight, CheckCircle2, Layers, 
   Wrench, FileCode, ShieldAlert, Sparkles, Compass, Cpu, 
-  Layout, Activity, Rocket, CheckSquare, ChevronRight, Zap
+  Layout, Activity, Rocket, CheckSquare, ChevronRight, Zap,
+  BarChart3, Code
 } from 'lucide-react';
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
@@ -11,23 +12,62 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
 export default function Home() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeTab, setActiveTab] = useState<'meta' | 'stories' | 'api' | 'metrics'>('meta');
   const [activeStage, setActiveStage] = useState<number>(0);
 
+  const isMM = language === 'mm';
+
   const anatomyTabs = [
-    { id: 'meta' as const, title: t('home_anatomy_meta'), icon: FileCode, tip: t('home_anatomy_meta_tip') },
-    { id: 'stories' as const, title: t('home_anatomy_stories'), icon: CheckSquare, tip: t('home_anatomy_stories_tip') },
-    { id: 'api' as const, title: t('home_anatomy_api'), icon: Cpu, tip: t('home_anatomy_api_tip') },
-    { id: 'metrics' as const, title: t('home_anatomy_metrics'), icon: Activity, tip: t('home_anatomy_metrics_tip') },
+    { 
+      id: 'meta' as const, 
+      title: t('home_anatomy_meta'), 
+      icon: FileCode, 
+      badge: 'Feeds from BRD',
+      tip: t('home_anatomy_meta_tip') 
+    },
+    { 
+      id: 'stories' as const, 
+      title: t('home_anatomy_stories'), 
+      icon: CheckSquare, 
+      badge: 'Core PRD Engine',
+      tip: t('home_anatomy_stories_tip') 
+    },
+    { 
+      id: 'api' as const, 
+      title: t('home_anatomy_api'), 
+      icon: Cpu, 
+      badge: 'Feeds into SRS',
+      tip: t('home_anatomy_api_tip') 
+    },
+    { 
+      id: 'metrics' as const, 
+      title: t('home_anatomy_metrics'), 
+      icon: Activity, 
+      badge: 'Verifies ROI',
+      tip: t('home_anatomy_metrics_tip') 
+    },
   ];
 
   const lifecycleStages = [
-    { title: t('home_life_s1'), desc: t('home_life_s1_desc'), color: 'bg-red-500 text-white' },
-    { title: t('home_life_s2'), desc: t('home_life_s2_desc'), color: 'bg-amber-500 text-white' },
-    { title: t('home_life_s3'), desc: t('home_life_s3_desc'), color: 'bg-blue-500 text-white' },
-    { title: t('home_life_s4'), desc: t('home_life_s4_desc'), color: 'bg-purple-500 text-white' },
-    { title: t('home_life_s5'), desc: t('home_life_s5_desc'), color: 'bg-emerald-500 text-white' },
+    { title: t('home_life_s1'), desc: t('home_life_s1_desc'), doc: 'BRD ➔ PRD Scope', color: 'bg-red-500 text-white' },
+    { title: t('home_life_s2'), desc: t('home_life_s2_desc'), doc: 'INVEST & Gherkin', color: 'bg-amber-500 text-white' },
+    { title: t('home_life_s3'), desc: t('home_life_s3_desc'), doc: 'SRS Architecture', color: 'bg-blue-500 text-white' },
+    { title: t('home_life_s4'), desc: t('home_life_s4_desc'), doc: 'Sprint Backlog & QA', color: 'bg-purple-500 text-white' },
+    { title: t('home_life_s5'), desc: t('home_life_s5_desc'), doc: 'Telemetry & ROI Audit', color: 'bg-emerald-500 text-white' },
+  ];
+
+  const hubItems = [
+    { title: 'BRD vs PRD vs SRS Framework', desc: 'Master the document pipeline from business ROI to user stories and engineering specs.', link: '/requirements-overview', icon: Layers, badge: 'Framework' },
+    { title: 'BRD Business Strategy', desc: 'Financial ROI modeling, stakeholder RACI maps, and enterprise business rules.', link: '/brd-guide', icon: BarChart3, badge: 'Business Case' },
+    { title: 'SRS Engineering Specs', desc: 'Functional vs Non-Functional requirements, ISO 25010 metrics, and API schemas.', link: '/srs-guide', icon: Cpu, badge: 'Engineering' },
+    { title: 'User Stories & Gherkin AC', desc: 'INVEST framework, Given-When-Then criteria, and interactive story generator.', link: '/user-stories', icon: CheckSquare, badge: 'Agile Best Practice' },
+    { title: 'PRD Builder Generator', desc: 'Interactive form to build & copy standard Markdown PRDs.', link: '/tools/prd-builder', icon: Wrench, badge: 'Interactive Tool' },
+    { title: 'NCC Project & Exam Guide', desc: 'Grade predictor, rubric breakdown & Given-When-Then matrix.', link: '/ncc-guide', icon: BookOpen, badge: 'Student Guide' },
+    { title: 'API & Database Specs', desc: 'REST/GraphQL contracts, JSON schema payloads, and ERD rules.', link: '/api-database', icon: Code, badge: 'Technical Spec' },
+    { title: 'UX Architecture & Flows', desc: 'Wireframing guidelines, sequence diagrams, and layout principles.', link: '/ux-architecture', icon: Layout, badge: 'Design Spec' },
+    { title: 'Go-To-Market (GTM) Plan', desc: 'Launch checklists, user persona targeting, and telemetry metrics.', link: '/gtm-plan', icon: Rocket, badge: 'Strategy' },
+    { title: 'Common PRD Mistakes', desc: 'Top traps to avoid: scope creep, vague specs, and missing NFRs.', link: '/mistakes', icon: ShieldAlert, badge: 'Best Practice' },
   ];
 
   return (
@@ -54,8 +94,12 @@ export default function Home() {
         />
 
         <div className="flex flex-wrap gap-4 items-center">
-          <Link href="/tools/prd-builder" className="btn-red flex items-center gap-2 shadow-xs">
-            <Wrench size={16} />
+          <Link href="/requirements-overview" className="btn-red flex items-center gap-2 shadow-xs">
+            <Layers size={16} />
+            Explore BRD ➔ PRD ➔ SRS
+          </Link>
+          <Link href="/tools/prd-builder" className="px-4 py-2.5 rounded-lg border border-gray-200 hover:border-red-300 bg-white text-gray-800 text-sm font-semibold flex items-center gap-1.5 transition-colors">
+            <Wrench size={15} className="text-red-600" />
             Generate PRD Now
           </Link>
           <Link href="/core-components" className="btn-ghost flex items-center gap-1.5">
@@ -105,11 +149,16 @@ export default function Home() {
         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
         className="card shadow-sm"
       >
-        <div className="card-header">
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-red-600">
-            <Layers size={16} className="text-white" />
+        <div className="card-header justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-red-600">
+              <Layers size={16} className="text-white" />
+            </div>
+            <h2 className="font-bold text-gray-900">{t('home_anatomy_title')}</h2>
           </div>
-          <h2 className="font-bold text-gray-900">{t('home_anatomy_title')}</h2>
+          <span className="text-xs font-semibold px-2.5 py-1 rounded bg-gray-800 text-gray-300">
+            End-to-End Spec
+          </span>
         </div>
 
         <div className="p-6 space-y-6">
@@ -123,13 +172,18 @@ export default function Home() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`p-3 rounded-xl text-left border transition-all duration-200 cursor-pointer flex flex-col justify-between gap-2 ${
+                  className={`p-3.5 rounded-xl text-left border transition-all duration-200 cursor-pointer flex flex-col justify-between gap-2 ${
                     isActive 
                       ? 'bg-red-600 text-white border-red-600 shadow-sm' 
                       : 'bg-white hover:bg-gray-50 text-gray-800 border-gray-200'
                   }`}
                 >
-                  <tab.icon size={18} className={isActive ? 'text-white' : 'text-red-600'} />
+                  <div className="flex items-center justify-between">
+                    <tab.icon size={18} className={isActive ? 'text-white' : 'text-red-600'} />
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${isActive ? 'bg-red-700 text-white' : 'bg-gray-100 text-gray-600'}`}>
+                      {tab.badge}
+                    </span>
+                  </div>
                   <span className="text-xs font-bold leading-snug">{tab.title}</span>
                 </button>
               );
@@ -148,10 +202,15 @@ export default function Home() {
                   transition={{ duration: 0.2 }}
                   className="space-y-2"
                 >
-                  <h4 className="font-bold text-sm text-gray-900 flex items-center gap-2">
-                    <tab.icon size={16} className="text-red-600" />
-                    {tab.title} Best Practice
-                  </h4>
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-bold text-sm text-gray-900 flex items-center gap-2">
+                      <tab.icon size={16} className="text-red-600" />
+                      {tab.title} Best Practice
+                    </h4>
+                    <span className="text-xs font-bold text-red-600 font-mono">
+                      Pipeline Connection: {tab.badge}
+                    </span>
+                  </div>
                   <p className="text-xs text-gray-700 leading-relaxed font-mono bg-white p-3 rounded-lg border border-gray-200">
                     💡 {tab.tip}
                   </p>
@@ -168,11 +227,16 @@ export default function Home() {
         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
         className="card shadow-sm"
       >
-        <div className="card-header">
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-red-600">
-            <Rocket size={16} className="text-white" />
+        <div className="card-header justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-red-600">
+              <Rocket size={16} className="text-white" />
+            </div>
+            <h2 className="font-bold text-gray-900">{t('home_life_title')}</h2>
           </div>
-          <h2 className="font-bold text-gray-900">{t('home_life_title')}</h2>
+          <span className="text-xs font-semibold px-2.5 py-1 rounded bg-gray-800 text-gray-300">
+            Document Pipeline
+          </span>
         </div>
 
         <div className="p-6 space-y-6">
@@ -199,11 +263,16 @@ export default function Home() {
 
           {/* Active Stage Details */}
           <div className="p-5 rounded-xl bg-gray-50 border border-gray-200 space-y-2">
-            <div className="flex items-center gap-2">
-              <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${lifecycleStages[activeStage].color}`}>
-                Stage 0{activeStage + 1}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${lifecycleStages[activeStage].color}`}>
+                  Stage 0{activeStage + 1}
+                </span>
+                <h4 className="font-bold text-sm text-gray-900">{lifecycleStages[activeStage].title}</h4>
+              </div>
+              <span className="text-xs font-mono font-bold text-gray-600 bg-white px-2 py-0.5 rounded border border-gray-200">
+                Artifact: {lifecycleStages[activeStage].doc}
               </span>
-              <h4 className="font-bold text-sm text-gray-900">{lifecycleStages[activeStage].title}</h4>
             </div>
             <p className="text-xs text-gray-600 leading-relaxed">
               {lifecycleStages[activeStage].desc}
@@ -257,14 +326,7 @@ export default function Home() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {[
-            { title: 'PRD Builder Generator', desc: 'Interactive form to build & copy standard Markdown PRDs.', link: '/tools/prd-builder', icon: Wrench, badge: 'Interactive Tool' },
-            { title: 'NCC Project & Exam Guide', desc: 'Grade predictor, rubric breakdown & Given-When-Then matrix.', link: '/ncc-guide', icon: BookOpen, badge: 'Student Guide' },
-            { title: 'API & Database Specs', desc: 'REST/GraphQL contracts, JSON schema payloads, and ERD rules.', link: '/api-database', icon: Cpu, badge: 'Technical Spec' },
-            { title: 'UX Architecture & Flows', desc: 'Wireframing guidelines, sequence diagrams, and layout principles.', link: '/ux-architecture', icon: Layout, badge: 'Design Spec' },
-            { title: 'Go-To-Market (GTM) Plan', desc: 'Launch checklists, user persona targeting, and telemetry metrics.', link: '/gtm-plan', icon: Rocket, badge: 'Strategy' },
-            { title: 'Common PRD Mistakes', desc: 'Top traps to avoid: scope creep, vague specs, and missing NFRs.', link: '/mistakes', icon: ShieldAlert, badge: 'Best Practice' },
-          ].map((item, idx) => (
+          {hubItems.map((item, idx) => (
             <Link key={idx} href={item.link}>
               <motion.div 
                 whileHover={{ y: -3, scale: 1.01 }}
@@ -298,15 +360,15 @@ export default function Home() {
       {/* ── 8. Bottom CTA Banner ── */}
       <div className="rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 bg-gray-900 text-white shadow-md">
         <div className="space-y-1">
-          <p className="font-bold text-xl text-white">Ready to write a world-class PRD?</p>
-          <p className="text-sm text-gray-400">Use our interactive PRD Builder tool or copy production-ready templates.</p>
+          <p className="font-bold text-xl text-white">Master the Full Requirements Lifecycle</p>
+          <p className="text-sm text-gray-400">From executive business cases (BRD) to user stories (PRD) and technical specs (SRS).</p>
         </div>
         <div className="flex gap-3 shrink-0">
-          <Link href="/tools/prd-builder" className="btn-red shrink-0 shadow-xs">
-            PRD Builder <Wrench size={14} />
+          <Link href="/requirements-overview" className="btn-red shrink-0 shadow-xs">
+            Start Framework <Layers size={14} />
           </Link>
           <Link href="/templates" className="px-4 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-white text-xs font-bold transition-colors shrink-0">
-            View Templates
+            View All Templates
           </Link>
         </div>
       </div>
